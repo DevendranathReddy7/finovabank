@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Login from "./components/Login/Login"
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
-export default App;
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Login />} />
+        <Route path="home" />
+        <Route path="payments">
+          <Route path="funds-transfer" element={<p>paymnet</p>}></Route>
+          <Route path="bill-paymnet" element={<p>paymnet</p>}></Route>
+          <Route path="imt" element={<p>paymnet</p>}></Route>
+          <Route path="pay-any-one" element={<p>paymnet</p>}></Route>
+        </Route>
+        <Route path="settings">
+          <Route path="add-biller" element={<p>paymnet</p>}></Route>
+          <Route path="add-imt" element={<p>paymnet</p>}></Route>
+          <Route path="add-paye" element={<p>paymnet</p>}></Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
+
+  )
+}
+export default App
