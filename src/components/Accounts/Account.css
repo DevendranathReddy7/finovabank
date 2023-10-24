@@ -1,0 +1,32 @@
+.accountName-container {
+
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    margin-left: 30px;
+
+}
+
+
+.acctName {
+    font-weight: bold;
+}
+
+.icon {
+    margin: 20px 0px 0px 20px;
+
+}
+
+.balance-funds-container {
+    width: 40%;
+    display: flex;
+    justify-content: 'flex-end'
+}
+
+.balance-container {
+    width: 40%;
+}
+
+.arrow {
+    width: 10%;
+}
