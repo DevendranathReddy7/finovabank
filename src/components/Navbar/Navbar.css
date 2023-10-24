@@ -1,0 +1,22 @@
+.nav-container {
+    background-color: rgb(104, 138, 238);
+    display: flex;
+}
+
+.title {
+    margin-left: 2rem;
+    margin-top: 5px;
+    display: inline-flex;
+}
+
+.quickLinks {
+    display: flex;
+    margin-left: 40rem;
+}
+
+.icon-div {
+    margin: 5px 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
