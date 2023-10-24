@@ -5,6 +5,7 @@ import { BsCurrencyRupee } from 'react-icons/bs'
 import './Account.css'
 import { useEffect, useState } from "react";
 import { getAccounts } from "../../supabase/apiAccounts";
+import Loader from "../common/Loader";
 const accounts1 = [{
     id: 1,
     accountName: 'ChequeAccount',
@@ -33,9 +34,10 @@ const Accounts = () => {
     useEffect(() => {
         getAccounts().then((data) => setAccounts(data))
     }, [])
-    console.log(accounts)
     return (
+
         <div>
+            {accounts.length === 0 && <Loader />}
             {accounts.map(account => <StyledLi key={account.id}>
                 <StyledOuterLi>
 
