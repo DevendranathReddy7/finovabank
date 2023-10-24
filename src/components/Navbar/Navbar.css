@@ -1,11 +1,11 @@
 .nav-container {
-    background-color: rgb(104, 138, 238);
+    background-color: rgb(114, 141, 224);
     display: flex;
 }
 
 .title {
-    margin-left: 2rem;
-    margin-top: 5px;
+    margin-left: 1rem;
+    margin-top: 3px;
     display: inline-flex;
 }
 
@@ -15,7 +15,7 @@
 }
 
 .icon-div {
-    margin: 5px 2rem;
+    margin: 3px 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;

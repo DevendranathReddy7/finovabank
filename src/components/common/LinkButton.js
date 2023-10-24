@@ -5,7 +5,7 @@ const LinkButton = ({ children, to }) => {
     return (
 
 
-        <Link to={to} style={{ color: 'white', textDecoration: 'none' }}>{children}</Link>
+        <Link to={to} style={{ color: 'Black', textDecoration: 'none', fontWeight: 'bold' }}>{children}</Link>
 
     )
 }
