@@ -2,9 +2,10 @@ import { StyledAccountsLi, StyledFirstColumn, StyledInnerAccountsLi, StyledLi, S
 import { FaCcMastercard } from "react-icons/fa";
 import { AiOutlineRight } from 'react-icons/ai'
 import { BsCurrencyRupee } from 'react-icons/bs'
-
 import './Account.css'
-const accounts = [{
+import { useEffect, useState } from "react";
+import { getAccounts } from "../../supabase/apiAccounts";
+const accounts1 = [{
     id: 1,
     accountName: 'ChequeAccount',
     balance: 500,
@@ -26,16 +27,22 @@ const accounts = [{
     accountNumber: 1237654789,
     icon: ''
 }]
+
 const Accounts = () => {
+    const [accounts, setAccounts] = useState([])
+    useEffect(() => {
+        getAccounts().then((data) => setAccounts(data))
+    }, [])
+    console.log(accounts)
     return (
         <div>
             {accounts.map(account => <StyledLi key={account.id}>
                 <StyledOuterLi>
 
-
                     <StyledFirstColumn>
                         <div className="icon">
-                            <FaCcMastercard size='40px' />
+                            {/* <FaCcMastercard size='50px' /> */}
+                            <img src={account.icon} />
                         </div>
                         <div className="accountName-container firstColum">
                             <p className="acctName">{account.accountName}</p>

@@ -17,9 +17,9 @@ export const StyledOuterLi = styled.div`
 display:flex;
 justify-content:space-between;
 align-items: center;
-width:110%;
+width:100%;
 `
 export const StyledFirstColumn = styled.div`
 display:inline-flex;
-width:75%;
+width:95%;
 `
