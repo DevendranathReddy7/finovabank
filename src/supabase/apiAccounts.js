@@ -11,3 +11,15 @@ export const getAccounts = async () => {
     }
     return data
 }
+
+export const getPaymnetTypes = async () => {
+
+    let { data, error } = await supabase
+        .from('PaymnetCapabailites')
+        .select('*')
+    if (error) {
+        console.error(error)
+        throw new Error('No Paymnets Found')
+    }
+    return data
+}

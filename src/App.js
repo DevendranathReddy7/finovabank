@@ -3,6 +3,8 @@ import Login from "./components/Login/Login"
 import Home from "./components/Home/Home"
 import { AuthProvider } from "./context/LoginContext"
 import Navbar from "./components/Navbar/Navbar"
+import Settings from "./components/SettingsTile/Settings"
+import PaymentsTile from "./components/PaymentsTile/PaymentsTile"
 
 const App = () => {
   return (
@@ -11,13 +13,13 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Login />} />
           <Route path="home" element={<Home />} />
-          <Route path="payments">
-            <Route path="funds-transfer" element={<p>paymnet</p>}></Route>
+          <Route path="payments" element={<PaymentsTile />}>
+            <Route path="funds-transfer" element={<p></p>}></Route>
             <Route path="bill-paymnet" element={<p>paymnet</p>}></Route>
             <Route path="imt" element={<p>paymnet</p>}></Route>
             <Route path="pay-any-one" element={<p>paymnet</p>}></Route>
           </Route>
-          <Route path="settings">
+          <Route path="settings" element={<Settings />}>
             <Route path="add-biller" element={<p>paymnet</p>}></Route>
             <Route path="add-imt" element={<p>paymnet</p>}></Route>
             <Route path="add-paye" element={<p>paymnet</p>}></Route>

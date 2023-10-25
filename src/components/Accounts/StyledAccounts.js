@@ -4,6 +4,7 @@ export const StyledLi = styled.li`
 display: flex;
 background-color: rgb(225, 229, 241);
 margin:5px 40px;
+border-radius:6px;
 `
 
 export const StyledAccountsLi = styled.div`

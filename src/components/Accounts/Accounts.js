@@ -6,28 +6,6 @@ import './Account.css'
 import { useEffect, useState } from "react";
 import { getAccounts } from "../../supabase/apiAccounts";
 import Loader from "../common/Loader";
-const accounts1 = [{
-    id: 1,
-    accountName: 'ChequeAccount',
-    balance: 500,
-    funds: 450,
-    accountNumber: 564219032,
-    icon: ''
-}, {
-    id: 2,
-    accountName: 'CreditAccount',
-    balance: 50,
-    funds: 40,
-    accountNumber: 987654321123,
-    icon: ''
-}, {
-    id: 3,
-    accountName: 'SavingsAccount',
-    balance: 5000,
-    funds: 4000,
-    accountNumber: 1237654789,
-    icon: ''
-}]
 
 const Accounts = () => {
     const [accounts, setAccounts] = useState([])
@@ -44,7 +22,7 @@ const Accounts = () => {
                     <StyledFirstColumn>
                         <div className="icon">
                             {/* <FaCcMastercard size='50px' /> */}
-                            <img src={account.icon} />
+                            <img src={account.icon} alt='icon' />
                         </div>
                         <div className="accountName-container firstColum">
                             <p className="acctName">{account.accountName}</p>
