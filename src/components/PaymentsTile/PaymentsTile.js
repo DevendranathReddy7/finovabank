@@ -1,13 +1,13 @@
 import Navbar from "../Navbar/Navbar"
 import TilesBar from "../Navbar/TilesBar"
-import Paymnets from "./Paymnets"
+import Payments from "./Payments"
 
 const PaymentsTile = () => {
     return (
         <div>
             <Navbar />
             <TilesBar />
-            <Paymnets />
+            <Payments />
         </div>
     )
 }
