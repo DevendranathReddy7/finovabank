@@ -1,12 +1,13 @@
-import Navbar from "../Navbar/Navbar"
-import TilesBar from "../Navbar/TilesBar"
+import { Outlet } from "react-router-dom"
+import AppLayout from "../AppLayout/AppLayout"
+import NavTileBarLayout from "../AppLayout/NavTileBarLayout"
 import Payments from "./Payments"
 
 const PaymentsTile = () => {
     return (
         <div>
-            <Navbar />
-            <TilesBar />
+            <NavTileBarLayout />
+            <Outlet />
             <Payments />
         </div>
     )

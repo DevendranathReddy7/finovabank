@@ -1,10 +1,13 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import Login from "./components/Login/Login"
 import Home from "./components/Home/Home"
 import { AuthProvider } from "./context/LoginContext"
 import Navbar from "./components/Navbar/Navbar"
 import Settings from "./components/SettingsTile/Settings"
 import PaymentsTile from "./components/PaymentsTile/PaymentsTile"
+import FundsTransfer from "./components/PaymentsTile/FundsTransfer"
+import BillPayment from "./components/PaymentsTile/BillPayment"
+import AppLayout from "./components/AppLayout/AppLayout"
 
 const App = () => {
   return (
@@ -12,14 +15,15 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Login />} />
-          <Route path="home" element={<Home />} />
-          <Route path="payments" element={<PaymentsTile />}>
-            <Route path="funds-transfer" element={<p></p>}></Route>
-            <Route path="bill-paymnet" element={<p>paymnet</p>}></Route>
+          <Route path="/home" element={<Home />} />
+          <Route path="/payments" element={<PaymentsTile />}>
+            <Route path="funds-transfer" element={<FundsTransfer />}></Route>
+            <Route path="bill-payment" element={<BillPayment />}></Route>
             <Route path="imt" element={<p>paymnet</p>}></Route>
             <Route path="pay-any-one" element={<p>paymnet</p>}></Route>
+            <Route path="credit-card" element={<p>pa1ymnet</p>}></Route>
           </Route>
-          <Route path="settings" element={<Settings />}>
+          <Route path="/settings" element={<Settings />}>
             <Route path="add-biller" element={<p>paymnet</p>}></Route>
             <Route path="add-imt" element={<p>paymnet</p>}></Route>
             <Route path="add-paye" element={<p>paymnet</p>}></Route>
