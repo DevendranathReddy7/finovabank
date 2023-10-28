@@ -16,8 +16,6 @@ const Navbar = () => {
                     <div className='icon-div'>
                         <h3>Dev</h3>
                     </div>
-
-
                 </div>
 
                 <div className="quickLinks">

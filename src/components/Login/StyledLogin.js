@@ -13,6 +13,8 @@ background-color:rgb(40, 70, 158);
 border-style:none;
 color:white;
 font-weight:bold;
-
 `
-
+export const StyledDivLogin = styled.div`
+margin:10rem;
+padding-top: 5rem;
+`
