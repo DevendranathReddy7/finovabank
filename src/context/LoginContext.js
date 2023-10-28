@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer, useState } from "react";
 const AuthContext = createContext()
 
 const initialState = {
@@ -19,7 +19,6 @@ const FAKE_USER = [{
 
 function reducer(state, action) {
     switch (action.type) {
-
         case "login":
             return { ...state, user: action.payload, isAuthenticated: true };
         case "logout":
@@ -30,11 +29,14 @@ function reducer(state, action) {
 }
 
 function AuthProvider({ children }) {
+    const [currentUser, setCurrentUser] = useState('')
     const [{ user, isAuthenticated }, dispatch] = useReducer(reducer, initialState)
     function login(email, password) {
         FAKE_USER.map(user => {
             if (user.email === email && user.password === password) {
                 dispatch({ type: 'login', payload: FAKE_USER })
+                setCurrentUser(user)
+
             }
         }
         )
@@ -43,7 +45,7 @@ function AuthProvider({ children }) {
     function logout() {
         dispatch({ type: 'logout' })
     }
-    return <AuthContext.Provider value={{ user, isAuthenticated, login, logout }}>{children}</AuthContext.Provider>
+    return <AuthContext.Provider value={{ user, isAuthenticated, login, logout, currentUser }}>{children}</AuthContext.Provider>
 }
 
 function useAuth() {
@@ -54,4 +56,4 @@ function useAuth() {
     return context
 }
 
-export { AuthProvider, useAuth }
+export { AuthProvider, useAuth, AuthContext }

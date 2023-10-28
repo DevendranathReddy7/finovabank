@@ -9,7 +9,7 @@ import BillPayment from "./components/PaymentsTile/BillPayment"
 
 const App = () => {
   return (
-    <AuthProvider>
+    < AuthProvider >
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Login />} />
@@ -28,7 +28,7 @@ const App = () => {
           </Route>
         </Routes>
       </BrowserRouter>
-    </AuthProvider>
+    </AuthProvider >
 
 
   )

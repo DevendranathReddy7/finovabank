@@ -1,10 +1,9 @@
 import supabase from "./Supabase"
 
-export const getAccounts = async () => {
-
+export const getAccounts = async (userid) => {
     const { data, error } = await supabase
         .from('Users')
-        .select('*').eq('userid', 1)
+        .select('*').eq('userid', userid)
     if (error) {
         console.error(error)
         throw new Error('invalid user')

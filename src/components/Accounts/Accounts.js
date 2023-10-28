@@ -3,14 +3,16 @@ import { FaCcMastercard } from "react-icons/fa";
 import { AiOutlineRight } from 'react-icons/ai'
 import { BsCurrencyRupee } from 'react-icons/bs'
 import './Account.css'
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getAccounts } from "../../supabase/apiAccounts";
 import Loader from "../common/Loader";
+import { AuthContext } from "../../context/LoginContext";
 
 const Accounts = () => {
     const [accounts, setAccounts] = useState([])
+    const { currentUser } = useContext(AuthContext)
     useEffect(() => {
-        getAccounts().then((data) => setAccounts(data))
+        getAccounts(currentUser.userId).then((data) => setAccounts(data))
     }, [])
     return (
 
@@ -18,7 +20,6 @@ const Accounts = () => {
             {accounts.length === 0 && <Loader />}
             {accounts.map(account => <StyledLi key={account.id}>
                 <StyledOuterLi>
-
                     <StyledFirstColumn>
                         <div className="icon">
                             {/* <FaCcMastercard size='50px' /> */}

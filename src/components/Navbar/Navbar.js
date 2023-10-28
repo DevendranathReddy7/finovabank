@@ -2,9 +2,13 @@ import './Navbar.css'
 import { IoMailUnreadOutline } from 'react-icons/io5'
 import { CiBank } from 'react-icons/ci'
 import { AiOutlineComment, AiFillBell, AiOutlineLogout } from 'react-icons/ai'
+import { useContext } from 'react'
+import { AuthContext } from '../../context/LoginContext'
 const size = '20px'
 
 const Navbar = () => {
+    const { currentUser } = useContext(AuthContext)
+
     return (
         <>
             <div className="nav-container">
@@ -14,7 +18,7 @@ const Navbar = () => {
                         <h3>Finova</h3>
                     </div>
                     <div className='icon-div'>
-                        <h3>Dev</h3>
+                        <h3>{currentUser.name}</h3>
                     </div>
                 </div>
 

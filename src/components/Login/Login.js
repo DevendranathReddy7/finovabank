@@ -5,8 +5,8 @@ import { useAuth } from "../../context/LoginContext";
 import { useNavigate } from "react-router-dom";
 import { CiBank } from 'react-icons/ci'
 const Login = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("77338262");
+    const [password, setPassword] = useState("dev123");
 
     const { login, isAuthenticated } = useAuth();
 
