@@ -3,6 +3,7 @@ import LinkButton from "../common/LinkButton"
 import { StyledButton, StyledInput } from "./StyledLogin"
 import { useAuth } from "../../context/LoginContext";
 import { useNavigate } from "react-router-dom";
+import { StyledDiv } from "../PaymentsTile/StyledPayments";
 
 const Login = () => {
     const [email, setEmail] = useState();
@@ -24,13 +25,13 @@ const Login = () => {
         [isAuthenticated, navigate]
     );
     return (
-        <div>
+        <StyledDiv>
             <form onSubmit={handleSubmit}>
                 <StyledInput onChange={(e) => setEmail(e.target.value)} type="email" />
                 <StyledInput onChange={(e) => setPassword(e.target.value)} />
-                <StyledButton><LinkButton to='home'>Log-in</LinkButton></StyledButton>
+                <StyledButton><LinkButton to='/home'>Log-in</LinkButton></StyledButton>
             </form>
-        </div>
+        </StyledDiv>
     )
 }
 export default Login

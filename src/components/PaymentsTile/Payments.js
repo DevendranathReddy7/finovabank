@@ -10,11 +10,8 @@ const Payments = () => {
     useEffect(() => {
         console.log('in effect')
         getPaymnetTypes().then((data) => setEligiblePayments(data))
-
-
     }, [])
 
-    { console.log(eligiblePayments, 9876543) }
     return (
         <div>
             {eligiblePayments.length === 0 && <Loader />}
