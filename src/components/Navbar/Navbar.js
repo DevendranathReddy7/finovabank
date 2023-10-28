@@ -8,13 +8,14 @@ import { useNavigate } from 'react-router-dom'
 const size = '20px'
 
 const Navbar = () => {
-    const { currentUser, logout } = useContext(AuthContext)
+    const { currentUser, logout, setLoginError } = useContext(AuthContext)
     const navigate = useNavigate()
     const logoutHandle = () => {
         const yes = window.confirm('Are you sure that you want to logout?')
         if (yes) {
             logout()
             navigate('/')
+            setLoginError('')
         }
     }
     return (

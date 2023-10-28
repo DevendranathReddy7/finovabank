@@ -30,13 +30,16 @@ function reducer(state, action) {
 
 function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState('')
+    const [loginError, setLoginError] = useState('')
     const [{ user, isAuthenticated }, dispatch] = useReducer(reducer, initialState)
     function login(email, password) {
         FAKE_USER.map(user => {
             if (user.email === email && user.password === password) {
+                setLoginError('')
                 dispatch({ type: 'login', payload: FAKE_USER })
                 setCurrentUser(user)
-
+            } else {
+                setLoginError('Invalid Registration Id or Password')
             }
         }
         )
@@ -45,7 +48,7 @@ function AuthProvider({ children }) {
     function logout() {
         dispatch({ type: 'logout' })
     }
-    return <AuthContext.Provider value={{ user, isAuthenticated, login, logout, currentUser }}>{children}</AuthContext.Provider>
+    return <AuthContext.Provider value={{ user, isAuthenticated, login, logout, currentUser, loginError, setLoginError }}>{children}</AuthContext.Provider>
 }
 
 function useAuth() {

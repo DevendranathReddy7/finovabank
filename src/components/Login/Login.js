@@ -8,8 +8,7 @@ const Login = () => {
     const [email, setEmail] = useState("77338262");
     const [password, setPassword] = useState("dev123");
 
-    const { login, isAuthenticated } = useAuth();
-
+    const { login, isAuthenticated, loginError } = useAuth();
     const navigate = useNavigate();
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -29,6 +28,7 @@ const Login = () => {
     return (
         <>
             <center style={{ fontWeight: "bolder", fontSize: '2rem', marginTop: '5rem' }}><CiBank /> Finova</center>
+            <center style={{ fontWeight: "bold", fontSize: '1rem', marginTop: '1rem', color: 'red' }}>{loginError}</center>
             <StyledDivLogin>
                 <form onSubmit={handleSubmit}>
                     <center>
