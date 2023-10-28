@@ -15,6 +15,8 @@ color:white;
 font-weight:bold;
 `
 export const StyledDivLogin = styled.div`
-margin:10rem;
-padding-top: 5rem;
+/* margin:10rem;
+padding-top: 5rem; */
+margin-left:10rem;
+height: 78vh;
 `

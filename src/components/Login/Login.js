@@ -5,8 +5,8 @@ import { useAuth } from "../../context/LoginContext";
 import { useNavigate } from "react-router-dom";
 import { CiBank } from 'react-icons/ci'
 const Login = () => {
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     const { login, isAuthenticated } = useAuth();
 
@@ -18,25 +18,26 @@ const Login = () => {
     }
 
     useEffect(
-
         function () {
-            if (isAuthenticated) navigate("/home", { replace: true });
+            if (isAuthenticated) {
+                navigate("/home", { replace: true })
+            }
         },
         [isAuthenticated, navigate]
     );
     return (
-        <StyledDivLogin>
-
-            <center style={{ fontWeight: "bolder", fontSize: '2rem' }}><CiBank /> Finova</center>
-
-            <form onSubmit={handleSubmit}>
-                <center>
-                    <StyledInput onChange={(e) => setEmail(e.target.value)} type="email" />
-                    <StyledInput onChange={(e) => setPassword(e.target.value)} />
-                    <StyledButton><LinkButton to='/home'>Log-in</LinkButton></StyledButton>
-                </center>
-            </form>
-        </StyledDivLogin>
+        <>
+            <center style={{ fontWeight: "bolder", fontSize: '2rem', marginTop: '5rem' }}><CiBank /> Finova</center>
+            <StyledDivLogin>
+                <form onSubmit={handleSubmit}>
+                    <center>
+                        <StyledInput onChange={(e) => setEmail(e.target.value)} type="text" value={email} placeholder="Registration Id" />
+                        <StyledInput onChange={(e) => setPassword(e.target.value)} type="password" value={password} placeholder="Password" />
+                        <StyledButton>Log-in</StyledButton>
+                    </center>
+                </form>
+            </StyledDivLogin>
+        </>
     )
 }
 export default Login

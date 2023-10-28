@@ -1,23 +1,26 @@
 import { createContext, useContext, useReducer } from "react";
-
-const AuthContext = createContext();
+const AuthContext = createContext()
 
 const initialState = {
     user: null,
     isAuthenticated: false,
 };
-const FAKE_USER = {
+const FAKE_USER = [{
     name: "Dev",
-    email: "dev@example.com",
-    password: "dev7733",
-    avatar: "https://i.pravatar.cc/100?u=zz",
-};
+    email: "77338262",
+    password: "dev123",
+    userId: '1',
+}, {
+    name: "Rahul",
+    email: "78435647",
+    password: "rahul123",
+    userId: '2',
+}];
 
 function reducer(state, action) {
     switch (action.type) {
 
         case "login":
-            console.log('in login')
             return { ...state, user: action.payload, isAuthenticated: true };
         case "logout":
             return { ...state, user: null, isAuthenticated: false };
@@ -27,34 +30,28 @@ function reducer(state, action) {
 }
 
 function AuthProvider({ children }) {
-    const [{ user, isAuthenticated }, dispatch] = useReducer(
-        reducer,
-        initialState
-    );
-
+    const [{ user, isAuthenticated }, dispatch] = useReducer(reducer, initialState)
     function login(email, password) {
-        if (email === FAKE_USER.email && password === FAKE_USER.password)
-            dispatch({ type: "login", payload: FAKE_USER });
-    }
+        FAKE_USER.map(user => {
+            if (user.email === email && user.password === password) {
+                dispatch({ type: 'login', payload: FAKE_USER })
+            }
+        }
+        )
 
+    }
     function logout() {
-        dispatch({ type: "logout" });
+        dispatch({ type: 'logout' })
     }
-
-    return (
-        <AuthContext.Provider value={{ user, isAuthenticated, login, logout }}>
-            {children}
-        </AuthContext.Provider>
-    );
+    return <AuthContext.Provider value={{ user, isAuthenticated, login, logout }}>{children}</AuthContext.Provider>
 }
 
 function useAuth() {
-    console.log('in contex')
     const context = useContext(AuthContext);
-
-    if (context === undefined)
-        throw new Error("AuthContext was used outside AuthProvider");
-    return context;
+    if (context === undefined) {
+        throw new Error("AuthContext was used outside of AuthProvider")
+    }
+    return context
 }
 
-export { AuthProvider, useAuth };
+export { AuthProvider, useAuth }
