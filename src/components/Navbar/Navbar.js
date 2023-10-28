@@ -4,11 +4,19 @@ import { CiBank } from 'react-icons/ci'
 import { AiOutlineComment, AiFillBell, AiOutlineLogout } from 'react-icons/ai'
 import { useContext } from 'react'
 import { AuthContext } from '../../context/LoginContext'
+import { useNavigate } from 'react-router-dom'
 const size = '20px'
 
 const Navbar = () => {
-    const { currentUser } = useContext(AuthContext)
-
+    const { currentUser, logout } = useContext(AuthContext)
+    const navigate = useNavigate()
+    const logoutHandle = () => {
+        const yes = window.confirm('Are you sure that you want to logout?')
+        if (yes) {
+            logout()
+            navigate('/')
+        }
+    }
     return (
         <>
             <div className="nav-container">
@@ -36,7 +44,7 @@ const Navbar = () => {
                     </div>
 
                     <div className='icon-div'>
-                        <AiOutlineLogout size={size} />
+                        <AiOutlineLogout size={size} onClick={logoutHandle} />
                     </div>
                 </div>
             </div>

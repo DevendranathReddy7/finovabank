@@ -20,7 +20,8 @@ const Login = () => {
     useEffect(
         function () {
             if (isAuthenticated) {
-                navigate("/home", { replace: true })
+                navigate("/home")
+                //navigate("/home", { replace: true })
             }
         },
         [isAuthenticated, navigate]
