@@ -1,11 +1,12 @@
 import NavTileBarLayout from "../AppLayout/NavTileBarLayout"
+import PaymentScreen from "../common/PaymentScreen/PaymentScreen"
 
 
 const FundsTransfer = () => {
     return (
         <div>
             <NavTileBarLayout />
-            <h3>Hey Ftx</h3>
+            <PaymentScreen title='Funds Transfer' />
         </div>
     )
 }
