@@ -1,19 +1,18 @@
-import { StyledAccountsLi, StyledFirstColumn, StyledInnerAccountsLi, StyledLi, StyledOuterLi } from "./StyledAccounts"
-import { FaCcMastercard } from "react-icons/fa";
+import { StyledFirstColumn, StyledLi, StyledOuterLi } from "./StyledAccounts"
 import { AiOutlineRight } from 'react-icons/ai'
 import { BsCurrencyRupee } from 'react-icons/bs'
 import './Account.css'
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getAccounts } from "../../supabase/apiAccounts";
 import Loader from "../common/Loader";
-import { AuthContext } from "../../context/LoginContext";
+import { useAuth } from "../../context/LoginContext";
 
 const Accounts = () => {
     const [accounts, setAccounts] = useState([])
-    const { currentUser } = useContext(AuthContext)
+    const { currentUser } = useAuth()
     useEffect(() => {
         getAccounts(currentUser.userId).then((data) => setAccounts(data))
-    }, [])
+    }, [currentUser.userId])
     return (
 
         <div>

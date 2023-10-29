@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import LinkButton from "../common/LinkButton"
 import { StyledButton, StyledDivLogin, StyledInput } from "./StyledLogin"
 import { useAuth } from "../../context/LoginContext";
 import { useNavigate } from "react-router-dom";

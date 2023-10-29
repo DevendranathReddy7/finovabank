@@ -2,13 +2,12 @@ import './Navbar.css'
 import { IoMailUnreadOutline } from 'react-icons/io5'
 import { CiBank } from 'react-icons/ci'
 import { AiOutlineComment, AiFillBell, AiOutlineLogout } from 'react-icons/ai'
-import { useContext } from 'react'
-import { AuthContext } from '../../context/LoginContext'
+import { useAuth } from '../../context/LoginContext'
 import { useNavigate } from 'react-router-dom'
 const size = '20px'
 
 const Navbar = () => {
-    const { currentUser, logout, setLoginError } = useContext(AuthContext)
+    const { currentUser, logout, setLoginError } = useAuth()
     const navigate = useNavigate()
     const logoutHandle = () => {
         const yes = window.confirm('Are you sure that you want to logout?')
