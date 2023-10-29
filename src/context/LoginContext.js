@@ -35,7 +35,6 @@ function AuthProvider({ children }) {
     function login(email, password) {
         FAKE_USER.map(user => {
             if (user.email === email && user.password === password) {
-                setLoginError('')
                 dispatch({ type: 'login', payload: FAKE_USER })
                 setCurrentUser(user)
             } else {

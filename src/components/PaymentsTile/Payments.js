@@ -3,6 +3,7 @@ import { getPaymnetTypes } from "../../supabase/apiAccounts"
 import Loader from "../common/Loader"
 import { StyledDiv, StyledLi } from "./StyledPayments"
 import LinkButton from "../common/LinkButton"
+import { Link } from "react-router-dom"
 
 const Payments = () => {
     const [eligiblePayments, setEligiblePayments] = useState([])

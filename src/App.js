@@ -14,13 +14,12 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Login />} />
           <Route path="/home" element={<Home />} />
-          <Route path="payments" element={<PaymentsTile />} >
-            <Route path="funds-transfer" element={<FundsTransfer />}></Route>
-            <Route path="bill-payment" element={<BillPayment />}></Route>
-            <Route path="imt" element={<p>paymnet</p>}></Route>
-            <Route path="pay-any-one" element={<p>paymnet</p>}></Route>
-            <Route path="credit-card" element={<p>pa1ymnet</p>}></Route>
-          </Route>
+          <Route path="/payments" element={<PaymentsTile />} />
+          <Route path="/funds-transfer" element={<FundsTransfer />} />
+          <Route path="/bill-payment" element={<BillPayment />}></Route>
+          <Route path="/imt" element={<p>paymnet</p>}></Route>
+          <Route path="/pay-any-one" element={<p>paymnet</p>}></Route>
+          <Route path="/credit-card" element={<p>pa1ymnet</p>}></Route>
           <Route path="/settings" element={<Settings />}>
             <Route path="add-biller" element={<p>paymnet</p>}></Route>
             <Route path="add-imt" element={<p>paymnet</p>}></Route>
