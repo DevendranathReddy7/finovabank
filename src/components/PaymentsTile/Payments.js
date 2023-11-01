@@ -3,25 +3,24 @@ import { getPaymnetTypes } from "../../supabase/apiAccounts"
 import Loader from "../common/Loader"
 import { StyledDiv, StyledLi } from "./StyledPayments"
 import LinkButton from "../common/LinkButton"
-import { Link } from "react-router-dom"
+import { useAuth } from "../../context/LoginContext"
 
 const Payments = () => {
+    const { currentUser } = useAuth()
     const [eligiblePayments, setEligiblePayments] = useState([])
 
     useEffect(() => {
-        console.log('in effect')
-        getPaymnetTypes().then((data) => setEligiblePayments(data))
-    }, [])
-
+        getPaymnetTypes(currentUser.userId).then((data) => setEligiblePayments(data))
+    }, [currentUser.userId])
     return (
         <div>
             {eligiblePayments.length === 0 && <Loader />}
             <div>
-                {eligiblePayments.map(payment => <StyledLi key={payment.id}>
+                {eligiblePayments[0]?.paymentTypes.map(payment => <StyledLi key={payment.id}>
                     <StyledDiv>
-                        <img src={payment.icon} style={{ height: '50px' }} />
+                        <img src={payment.icon} style={{ height: '50px' }} alt="icon" />
                         <hr style={{ width: '15rem' }} />
-                        <LinkButton to={payment.path}>{payment.paymentType}</LinkButton>
+                        <LinkButton to={payment.path}>{payment.payment}</LinkButton>
                     </StyledDiv>
                 </StyledLi>
                 )}

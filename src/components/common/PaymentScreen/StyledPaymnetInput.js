@@ -1,14 +1,21 @@
 import styled from "styled-components";
 
-export const StyledPaymnetSelect = styled.select`
-height:4rem;
-width:50rem;
-`
 
-export const StyledPaymnetInput = styled.input`
+export const StyledPaymnetLi = styled.li`
 height:3rem;
 width:49.5rem;
+list-style-type:none;
+margin: 1rem;
 `
+
+export const StyledOuterLi = styled.li`
+height:3rem;
+width:49.5rem;
+list-style-type:none;
+border-style:solid;
+margin: 1rem;
+`
+
 export const StyledPaymnetDiv = styled.div`
 margin:2% 5% 2% 19%;
 `
