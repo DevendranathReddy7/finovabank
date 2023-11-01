@@ -1,5 +1,5 @@
 import NavTileBarLayout from "../AppLayout/NavTileBarLayout"
-import PaymentScreen from "../common/PaymentScreen/PaymentScreen"
+import PaymentScreen from "./common/PaymentScreen/PaymentScreen"
 
 
 const FundsTransfer = () => {
