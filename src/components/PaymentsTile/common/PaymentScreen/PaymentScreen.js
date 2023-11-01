@@ -26,12 +26,12 @@ const PaymentScreen = (props) => {
                 <div>
                     <Label>From</Label>
                     <StyledPaymentInput type="text" placeholder="Select From Account" onClick={toggleContainer} />
-                    {isContainerVisible && <AccountsModal accounts={accounts} />}
+                    {isContainerVisible && <AccountsModal which='From' accounts={accounts} />}
                 </div>
                 <div>
                     <Label>To</Label>
                     <StyledPaymentInput type="text" placeholder="Select To Account" onClick={toggleContainer} />
-                    {isContainerVisible && <AccountsModal accounts={accounts} />}
+                    {isContainerVisible && <AccountsModal which='To' accounts={accounts} />}
                 </div>
                 <div>
                     <Label>Amount</Label>

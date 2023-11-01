@@ -20,7 +20,10 @@ function AccountsModal(props) {
         <div>
             {isModalOpen && (
                 <CustomModal>
-                    <button onClick={closeModal} style={{ display: 'flex', justifyContent: 'flex-end' }}>X</button>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '0px 1rem' }}>
+                        <p>{props.which} (Select account)</p>
+                        <button onClick={closeModal} >X</button>
+                    </div>
                     {props.accounts.map(acct => <StyledLi key={acct.accountNumber}>
                         <ListItem>
                             <FirstColumn>
