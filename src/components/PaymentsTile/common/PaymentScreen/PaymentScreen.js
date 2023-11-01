@@ -4,6 +4,7 @@ import { getAccounts } from "../../../../supabase/apiAccounts"
 import { useAuth } from "../../../../context/LoginContext"
 import PaymentsAccounts from "../../../common/PaymentsAccounts"
 import AccountsModal from "../AccountsModal"
+import LinkButton from "../../../common/LinkButton"
 
 const PaymentScreen = (props) => {
     const [accounts, setAccounts] = useState([])
@@ -37,11 +38,7 @@ const PaymentScreen = (props) => {
                     <StyledPaymentInput type="text" placeholder="Enter Account" />
                 </div>
                 <div style={{ display: "flex", justifyContent: "flex-end", padding: '3px', marginRight: '4rem' }}>
-                    {/* <FooterWrapper> */}
-                    <footer>
-                        <PrimaryButton>Continue</PrimaryButton>
-                    </footer>
-                    {/* </FooterWrapper> */}
+                    <LinkButton to='/review-confirm'><PrimaryButton>Continue</PrimaryButton></LinkButton>
                 </div>
 
             </PaymentWrapper >
