@@ -1,4 +1,4 @@
-import NavTileBarLayout from "../AppLayout/NavTileBarLayout"
+import NavTileBarLayout from "../../AppLayout/NavTileBarLayout"
 import Payments from "./Payments"
 
 const PaymentsTile = () => {

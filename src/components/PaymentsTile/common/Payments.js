@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
-import { getPaymnetTypes } from "../../supabase/apiAccounts"
-import Loader from "../common/Loader"
-import { StyledDiv, StyledLi } from "./StyledPayments"
-import LinkButton from "../common/LinkButton"
-import { useAuth } from "../../context/LoginContext"
+import { getPaymnetTypes } from "../../../supabase/apiAccounts"
+import Loader from "../../common/Loader"
+import { Hr, StyledDiv, StyledLi } from "./StyledPayments"
+import LinkButton from "../../common/LinkButton"
+import { useAuth } from "../../../context/LoginContext"
 
 const Payments = () => {
     const { currentUser } = useAuth()
@@ -19,7 +19,7 @@ const Payments = () => {
                 {eligiblePayments[0]?.paymentTypes.map(payment => <StyledLi key={payment.id}>
                     <StyledDiv>
                         <img src={payment.icon} style={{ height: '50px' }} alt="icon" />
-                        <hr style={{ width: '15rem' }} />
+                        <Hr />
                         <LinkButton to={payment.path}>{payment.payment}</LinkButton>
                     </StyledDiv>
                 </StyledLi>

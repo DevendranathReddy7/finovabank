@@ -3,7 +3,7 @@ import Login from "./components/Login/Login"
 import Home from "./components/Home/Home"
 import { AuthProvider } from "./context/LoginContext"
 import Settings from "./components/SettingsTile/Settings"
-import PaymentsTile from "./components/PaymentsTile/PaymentsTile"
+import PaymentsTile from "./components/PaymentsTile/common/PaymentsTile"
 import FundsTransfer from "./components/PaymentsTile/FundsTransfer"
 import BillPayment from "./components/PaymentsTile/BillPayment"
 
