@@ -18,6 +18,10 @@ function AccountsModal(props) {
     useEffect(() => {
         setModalOpen(true)
     }, [])
+    const clickHandler = (id) => {
+        setModalOpen(false)
+        props.selectedAccount(id)
+    }
     return (
         <div>
             {isModalOpen && (
@@ -26,7 +30,7 @@ function AccountsModal(props) {
                         <p>{props.which} (Select account)</p>
                         <button onClick={closeModal} >X</button>
                     </div>
-                    {props.accounts.map(acct => <StyledLi key={acct.accountNumber}>
+                    {props.accounts.map(acct => <StyledLi key={acct.id} onClick={() => { clickHandler(acct.id) }}>
                         <ListItem>
                             <FirstColumn>
                                 <div>

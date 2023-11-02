@@ -18,7 +18,8 @@ const Accounts = () => {
 
         <div>
             {accounts.length === 0 && <Loader />}
-            <H3>Your Account's</H3>
+            {accounts.length > 0 ? <H3>Your Account's</H3> : ''}
+
             {accounts.map(account => <StyledLi key={account.id}>
                 <StyledOuterLi>
                     <StyledFirstColumn>
