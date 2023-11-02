@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './AccountsModal.css'
 import { BsCurrencyRupee } from 'react-icons/bs'
 import { AiOutlineRight } from 'react-icons/ai'
@@ -15,7 +15,9 @@ function AccountsModal(props) {
     const closeModal = () => {
         setModalOpen(false);
     };
-
+    useEffect(() => {
+        setModalOpen(true)
+    }, [])
     return (
         <div>
             {isModalOpen && (
@@ -31,23 +33,20 @@ function AccountsModal(props) {
                                     <ImgDiv src={acct.icon} alt='icon' />
                                 </div>
                                 <AccountNameDiv>
-                                    <h4>{acct.accountName}</h4>
-                                    <h3>{acct.accountNumber}</h3>
+                                    <p>{acct.accountName}</p>
+                                    <p>{acct.accountNumber}</p>
                                 </AccountNameDiv>
                             </FirstColumn>
                             <FirstColumn>
                                 <div>
-                                    <h4>Funds</h4>
-                                    <h3><BsCurrencyRupee />{acct.funds}</h3>
-
-                                </div>
-
-                                <div>
-                                    <AiOutlineRight />
+                                    <p>Funds</p>
+                                    <p><BsCurrencyRupee />{acct.funds}</p>
                                 </div>
                             </FirstColumn>
                         </ListItem>
+                        <hr></hr>
                     </StyledLi>
+
                     )}
                 </CustomModal>)
             }

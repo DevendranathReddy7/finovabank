@@ -8,11 +8,20 @@ import LinkButton from "../../../common/LinkButton"
 
 const PaymentScreen = (props) => {
     const [accounts, setAccounts] = useState([])
-    const [isContainerVisible, setContainerVisible] = useState(false);
+    const [isFromAccountClicked, setIsFromAccountClicked] = useState(false);
+    const [isToAccountClicked, setIsToAccountClicked] = useState(false);
+
     const { currentUser } = useAuth()
 
-    const toggleContainer = () => {
-        setContainerVisible(!isContainerVisible);
+    const toggleContainer = (id) => {
+        if (id === 'from') {
+            setIsFromAccountClicked((prev) => !prev);
+            setIsToAccountClicked(false)
+
+        } else {
+            setIsToAccountClicked((prev) => !prev);
+            setIsFromAccountClicked(false)
+        }
     };
 
     useEffect(() => {
@@ -25,13 +34,13 @@ const PaymentScreen = (props) => {
             <PaymentWrapper>
                 <div>
                     <Label>From</Label>
-                    <StyledPaymentInput type="text" placeholder="Select From Account" onClick={toggleContainer} />
-                    {isContainerVisible && <AccountsModal which='From' accounts={accounts} />}
+                    <StyledPaymentInput type="text" placeholder="Select From Account" onClick={() => toggleContainer('from')} />
+                    {isFromAccountClicked && <AccountsModal which='From' accounts={accounts} modalOpen={isFromAccountClicked} />}
                 </div>
                 <div>
                     <Label>To</Label>
-                    <StyledPaymentInput type="text" placeholder="Select To Account" onClick={toggleContainer} />
-                    {isContainerVisible && <AccountsModal which='To' accounts={accounts} />}
+                    <StyledPaymentInput type="text" placeholder="Select To Account" onClick={() => toggleContainer('to')} />
+                    {isToAccountClicked && <AccountsModal which='To' accounts={accounts} modalOpen={isToAccountClicked} />}
                 </div>
                 <div>
                     <Label>Amount</Label>

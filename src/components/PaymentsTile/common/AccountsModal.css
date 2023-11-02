@@ -4,10 +4,9 @@
     left: 20rem;
     right: 20rem;
     bottom: 2rem;
+    overflow: scroll;
     background-color: rgba(244, 245, 241, 0.989);
     display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 20px;
     border-radius: 5px;
 

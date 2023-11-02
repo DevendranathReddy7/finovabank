@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { getAccounts } from "../../supabase/apiAccounts";
 import Loader from "../common/Loader";
 import { useAuth } from "../../context/LoginContext";
+import { H3 } from "../PaymentsTile/common/PaymentScreen/StyledPaymnetInput";
 
 const Accounts = () => {
     const [accounts, setAccounts] = useState([])
@@ -17,6 +18,7 @@ const Accounts = () => {
 
         <div>
             {accounts.length === 0 && <Loader />}
+            <H3>Your Account's</H3>
             {accounts.map(account => <StyledLi key={account.id}>
                 <StyledOuterLi>
                     <StyledFirstColumn>

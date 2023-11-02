@@ -10,11 +10,11 @@
 
 .quickLinks {
     display: flex;
-    margin-left: 40rem;
+    margin-left: 50rem;
 }
 
 .icon-div {
-    margin: 0px 2rem;
+    margin: 0px 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;

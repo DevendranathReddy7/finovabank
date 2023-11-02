@@ -10,12 +10,12 @@ const Navbar = () => {
     const { currentUser, logout, setLoginError } = useAuth()
     const navigate = useNavigate()
     const logoutHandle = () => {
-        const yes = window.confirm('Are you sure that you want to logout?')
-        if (yes) {
-            logout()
-            navigate('/')
-            setLoginError('')
-        }
+        // const yes = window.confirm('Are you sure that you want to logout?')
+        // if (yes) {
+        logout()
+        navigate('/')
+        setLoginError('')
+        //}
     }
     return (
         <>
