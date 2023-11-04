@@ -30,7 +30,7 @@ function AccountsModal(props) {
                         <p>{props.which} (Select account)</p>
                         <button onClick={closeModal} >X</button>
                     </div>
-                    {props.accounts.map(acct => <StyledLi key={acct.id} onClick={() => { clickHandler(acct.id) }}>
+                    {props.accounts?.map(acct => <StyledLi key={acct.id} onClick={() => { clickHandler(acct.id) }}>
                         <ListItem>
                             <FirstColumn>
                                 <div>

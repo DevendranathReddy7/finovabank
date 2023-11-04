@@ -12,13 +12,16 @@ const PaymentProvider = ({ children }) => {
     const [selectedFromAccount, setSelectedFromAccount] = useState('')
     const [selectedToAccount, setSelectedToAccount] = useState('')
     const [enteredAmount, setEnteredAmount] = useState(0)
-    const [paymentData, setPaymentData] = useState([])
+    const [paymentData, setPaymentData] = useState({})
     const { currentUser } = useAuth()
     useEffect(() => {
         getAccounts(currentUser.userId).then((data) => setAccounts(data))
     }, [])
-    return <PaymentContext.Provider value={{ accounts, paymentData, selectedFromAccount, selectedToAccount, enteredAmount, setPaymentData, setSelectedFromAccount, setSelectedToAccount, setEnteredAmount }}>{children}</PaymentContext.Provider>
+    useEffect(() => {
+        setPaymentData({ selectedFromAccount, selectedToAccount, enteredAmount })
+    }, [selectedFromAccount, selectedToAccount, enteredAmount])
 
+    return <PaymentContext.Provider value={{ accounts, paymentData, setPaymentData, setSelectedFromAccount, setSelectedToAccount, setEnteredAmount }}>{children}</PaymentContext.Provider>
 
 }
 

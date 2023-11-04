@@ -6,8 +6,7 @@ import { BsCurrencyRupee } from 'react-icons/bs'
 
 
 const ReviewConfirm = () => {
-    const { selectedFromAccount, selectedToAccount, enteredAmount } = usePayments()
-    console.log(selectedFromAccount, selectedToAccount, enteredAmount)
+    const { paymentData } = usePayments()
     return (
         <div>
             <NavTileBarLayout />
@@ -16,19 +15,19 @@ const ReviewConfirm = () => {
                 <table style={{ display: "flex", margin: '4rem' }}>
                     <div style={{ marginRight: '4rem' }}>
                         <tr><b>From </b></tr>
-                        <tr>Account: &nbsp; {selectedFromAccount[0].accountName}</tr>
-                        <tr>Account Number: &nbsp; {selectedFromAccount[0].accountNumber}</tr>
+                        <tr>Account: &nbsp; {paymentData.selectedFromAccount[0].accountName}</tr>
+                        <tr>Account Number: &nbsp; {paymentData.selectedFromAccount[0].accountNumber}</tr>
                     </div>
                     <div>
-                        <tr><b>To</b> &nbsp; {selectedToAccount[0].name}</tr>
-                        <tr>Account: &nbsp; {selectedToAccount[0].accountName}</tr>
-                        <tr>Account Number: &nbsp; {selectedToAccount[0].accountNumber}</tr>
+                        <tr><b>To</b> &nbsp; {paymentData.selectedToAccount[0].name}</tr>
+                        <tr>Account: &nbsp; {paymentData.selectedToAccount[0].accountName}</tr>
+                        <tr>Account Number: &nbsp; {paymentData.selectedToAccount[0].accountNumber}</tr>
                     </div>
                 </table>
                 <table style={{ display: "flex", margin: '4rem' }}>
                     <div>
                         <th>
-                            Amount <BsCurrencyRupee />{enteredAmount}
+                            Amount <BsCurrencyRupee />{paymentData.enteredAmount}
                         </th>
                     </div>
                 </table>

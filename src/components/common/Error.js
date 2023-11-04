@@ -1,3 +1,5 @@
+import { StyledPara } from "./StyledCommon"
+
 const Error = (props) => {
     console.log(props)
     return (
@@ -7,3 +9,11 @@ const Error = (props) => {
     )
 }
 export default Error
+
+export const ValidationError = (props) => {
+    return (
+        <StyledPara>
+            {props.msg}
+        </StyledPara>
+    )
+}
