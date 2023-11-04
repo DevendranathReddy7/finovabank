@@ -60,3 +60,11 @@ border:none;
 border-radius:3px;
 color: white;
 `
+export const SecondaryButton = styled.button`
+background-color:transparent;
+padding:10px 15px;
+border:solid skyblue;
+border-radius:3px;
+margin-right: 3rem;
+color: black;
+`

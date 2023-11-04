@@ -6,7 +6,8 @@ export const getAccounts = async (userid) => {
         .from('Users')
         .select('*').eq('userid', userid)
     if (error) {
-        throw new Error('invalid user')
+        return error
+        // throw new Error('invalid user')
     }
     return data
 }
