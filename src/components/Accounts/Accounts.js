@@ -17,10 +17,10 @@ const Accounts = () => {
     return (
 
         <div>
-            {accounts.length === 0 && <Loader />}
-            {accounts.length > 0 ? <H3>Your Account's</H3> : ''}
+            {accounts?.length === 0 && <Loader />}
+            {accounts?.length > 0 ? <H3>Your Account's</H3> : ''}
 
-            {accounts.map(account => <StyledLi key={account.id}>
+            {accounts?.map(account => <StyledLi key={account.id}>
                 <StyledOuterLi>
                     <StyledFirstColumn>
                         <div className="icon">

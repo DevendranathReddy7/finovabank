@@ -1,9 +1,10 @@
 import { Link, useNavigate } from "react-router-dom"
+import { SecondaryButton } from "../PaymentsTile/common/PaymentScreen/StyledPaymnetInput"
 const LinkButton = ({ children, to }) => {
     const navigate = useNavigate()
-    if (to === '-1') return (<button style={{ color: 'white', textDecoration: 'none' }} onClick={() => navigate(-1)}>{children}</button>)
+    if (to === '-1') return (<SecondaryButton onClick={() => navigate(-1)}>{children}</SecondaryButton>)
     return (
-        <Link to={to} style={{ color: 'Black', textDecoration: 'none', fontWeight: 'bold' }}>{children}</Link>
+        <Link to={to} style={{ color: 'Black', textDecoration: 'none', fontWeight: 'bold' }} >{children}</Link>
 
     )
 }

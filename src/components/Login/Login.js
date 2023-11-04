@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Center, StyledButton, StyledDivLogin, StyledInput } from "./StyledLogin"
+import { StyledButton, StyledDivLogin, StyledInput, StyledPara } from "./StyledLogin"
 import { useAuth } from "../../context/LoginContext";
 import { useNavigate } from "react-router-dom";
 import { CiBank } from 'react-icons/ci'
@@ -26,8 +26,7 @@ const Login = () => {
     );
     return (
         <>
-            {/* <Center><CiBank /> Finova</Center> */}
-            <center style={{ fontWeight: "bolder", fontSize: '2rem', marginTop: '5rem' }}><CiBank /> Finova</center>
+            <StyledPara><CiBank />Finova</StyledPara>
             <center style={{ fontWeight: "bold", fontSize: '1rem', marginTop: '1rem', color: 'red' }}>{loginError}</center>
             <StyledDivLogin>
                 <form onSubmit={handleSubmit}>

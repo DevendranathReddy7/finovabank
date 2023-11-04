@@ -1,10 +1,16 @@
 import styled from "styled-components";
 
-// export const Center = styled.center`
-// font-weight:bolder;
-// font-size:2rem;
-// margin-top:5rem;
-// `
+export const StyledPara = styled.p`
+width: 100px;
+display: inline;
+font-weight:bold;
+font-size: larger;
+@media (max-width: 480px) {
+    margin:  1.3rem 30rem 20px 5rem;
+}
+@media (min-width: 480px) {
+    margin:  5rem 30rem 20px 35rem;}
+`
 export const StyledInput = styled.input`
 margin: ${(props) => (props.crn ? '13rem 30rem 0.5rem 20rem;' : '2rem 30rem 20px 20rem;')};
 height: 2rem;
