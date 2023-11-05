@@ -38,6 +38,8 @@ const PaymentScreen = (props) => {
 
         if (Number(e.target.value) > paymentData.selectedFromAccount[0].funds) {
             setAmountCheck(true)
+        } else if ((Number(e.target.value) <= 0)) {
+            setAmountCheck(true)
         } else {
             setEnteredAmount(e.target.value)
             setAmountCheck(false)
@@ -65,7 +67,7 @@ const PaymentScreen = (props) => {
                     </div>
                     <div>
                         <Label>Amount</Label>
-                        <StyledPaymentInput type="text" placeholder="Enter Account" sty={amountCheck.toString()} onChange={(e) => amountHandler(e)} />
+                        <StyledPaymentInput type="text" placeholder="Enter Account" sty={amountCheck.toString()} onChange={(e) => amountHandler(e)} required='required' />
                         {amountCheck && <ValidationError msg='Please enter a valid amount'></ValidationError>}
                     </div>
                     <div style={{ display: "flex", justifyContent: "flex-end", padding: '3px', marginRight: '4rem' }}>

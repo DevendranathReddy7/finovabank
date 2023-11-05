@@ -6,7 +6,12 @@ import { BsCurrencyRupee } from 'react-icons/bs'
 
 
 const ReviewConfirm = () => {
-    const { paymentData } = usePayments()
+    const { paymentData, setPaymentData } = usePayments()
+
+    const continueHandler = () => {
+        console.log({ ...paymentData, selectedFromAccount: [{ ...paymentData.selectedFromAccount[0], funds: paymentData.selectedFromAccount[0].funds - Number(paymentData.enteredAmount) }, ...paymentData.selectedFromAccount.slice(1)], selectedToAccount: [{ ...paymentData.selectedToAccount[0], funds: paymentData.selectedToAccount[0].funds + Number(paymentData.enteredAmount) }, ...paymentData.selectedToAccount.slice(1)] })
+        setPaymentData({ ...paymentData, selectedFromAccount: [{ ...paymentData.selectedFromAccount[0], funds: paymentData.selectedFromAccount[0].funds - Number(paymentData.enteredAmount) }, ...paymentData.selectedFromAccount.slice(1)], selectedToAccount: [{ ...paymentData.selectedToAccount[0], funds: paymentData.selectedToAccount[0].funds + Number(paymentData.enteredAmount) }, ...paymentData.selectedToAccount.slice(1)] })
+    }
     return (
         <div>
             <NavTileBarLayout />
@@ -33,7 +38,7 @@ const ReviewConfirm = () => {
                 </table>
                 <table style={{ display: "flex", margin: '4rem' }}>
                     <LinkButton to='-1'>Back</LinkButton>
-                    <LinkButton to='/submit'><PrimaryButton>Submit</PrimaryButton></LinkButton>
+                    <LinkButton to='/submit'><PrimaryButton onClick={continueHandler}>Submit</PrimaryButton></LinkButton>
                 </table>
 
 

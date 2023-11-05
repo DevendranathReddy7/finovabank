@@ -7,12 +7,11 @@ import { usePayments } from '../../../context/paymentContext';
 
 function AccountsModal(props) {
     const { accounts, paymentData } = usePayments()
-    console.log(accounts)
     const [isModalOpen, setModalOpen] = useState(true);
 
-    const openModal = () => {
-        setModalOpen(true);
-    };
+    // const openModal = () => {
+    //     setModalOpen(true);
+    // };
 
     const closeModal = () => {
         setModalOpen(false);
@@ -28,10 +27,10 @@ function AccountsModal(props) {
         <div>
             {isModalOpen && (
                 <CustomModal>
-                    {/* <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '0px 1rem' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '0px 1rem' }}>
                         <p>{props.which} (Select account)</p>
                         <button onClick={closeModal} >X</button>
-                    </div> */}
+                    </div>
                     {accounts?.map(acct => <StyledLi key={acct.id} onClick={() => { clickHandler(acct.id) }}>
                         <ListItem>
                             <FirstColumn>
