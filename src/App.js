@@ -8,6 +8,7 @@ import FundsTransfer from "./components/PaymentsTile/FundsTransfer"
 import BillPayment from "./components/PaymentsTile/BillPayment"
 import ReviewConfirm from "./components/PaymentsTile/common/ReviewConfirm"
 import { PaymentProvider } from "./context/paymentContext"
+import Submit from "./components/PaymentsTile/common/Submit"
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
             <Route path="/pay-any-one" element={<p>paymnet</p>}></Route>
             <Route path="/credit-card" element={<p>pa1ymnet</p>}></Route>
             <Route path="/review-confirm" element={<ReviewConfirm />}></Route>
+            <Route path="/submit" element={<Submit />}></Route>
             <Route path="/settings" element={<Settings />}>
               <Route path="add-biller" element={<p>paymnet</p>}></Route>
               <Route path="add-imt" element={<p>paymnet</p>}></Route>

@@ -9,4 +9,4 @@ margin:10rem 10rem 10rem 10px;
 export const StyledPara = styled.p`
 color:red;
 margin-left:3rem;
-margin-top:0px;`
+margin-top:-12px;`

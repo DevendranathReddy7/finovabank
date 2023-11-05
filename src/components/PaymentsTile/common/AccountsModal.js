@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import './AccountsModal.css'
 import { BsCurrencyRupee } from 'react-icons/bs'
-import { AiOutlineRight } from 'react-icons/ai'
 
 import { AccountNameDiv, CustomModal, FirstColumn, ImgDiv, ListItem, StyledLi } from './AccountModalStyled';
+import { usePayments } from '../../../context/paymentContext';
 
 function AccountsModal(props) {
+    const { accounts, paymentData } = usePayments()
+    console.log(accounts)
     const [isModalOpen, setModalOpen] = useState(true);
 
     const openModal = () => {
@@ -26,11 +28,11 @@ function AccountsModal(props) {
         <div>
             {isModalOpen && (
                 <CustomModal>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '0px 1rem' }}>
+                    {/* <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '0px 1rem' }}>
                         <p>{props.which} (Select account)</p>
                         <button onClick={closeModal} >X</button>
-                    </div>
-                    {props.accounts?.map(acct => <StyledLi key={acct.id} onClick={() => { clickHandler(acct.id) }}>
+                    </div> */}
+                    {accounts?.map(acct => <StyledLi key={acct.id} onClick={() => { clickHandler(acct.id) }}>
                         <ListItem>
                             <FirstColumn>
                                 <div>
