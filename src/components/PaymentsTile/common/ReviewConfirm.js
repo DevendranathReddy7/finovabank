@@ -33,7 +33,7 @@ const ReviewConfirm = () => {
                 </table>
                 <table style={{ display: "flex", margin: '4rem' }}>
                     <LinkButton to='-1'>Back</LinkButton>
-                    <LinkButton to='/confirm'><PrimaryButton>Submit</PrimaryButton></LinkButton>
+                    <LinkButton to='/submit'><PrimaryButton>Submit</PrimaryButton></LinkButton>
                 </table>
 
 

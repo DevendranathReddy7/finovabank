@@ -65,8 +65,8 @@ const PaymentScreen = (props) => {
                     </div>
                     <div>
                         <Label>Amount</Label>
-                        <StyledPaymentInput type="text" placeholder="Enter Account" onChange={(e) => amountHandler(e)} />
-                        {amountCheck && <ValidationError msg='Please enter a Valid  Amount'></ValidationError>}
+                        <StyledPaymentInput type="text" placeholder="Enter Account" sty={amountCheck.toString()} onChange={(e) => amountHandler(e)} />
+                        {amountCheck && <ValidationError msg='Please enter a valid amount'></ValidationError>}
                     </div>
                     <div style={{ display: "flex", justifyContent: "flex-end", padding: '3px', marginRight: '4rem' }}>
                         <LinkButton to='/review-confirm' ><PrimaryButton disabled={amountCheck}>Continue</PrimaryButton></LinkButton>

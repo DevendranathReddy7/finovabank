@@ -37,11 +37,13 @@ border-width: 1px;
 height: 3rem;
 width: 90%;
 margin:1rem 3rem;
+border-color:${(props) => props.sty === "true" ? 'red' : 'black'};
 `
 
 export const Label = styled.label`
 display:block;
 margin-left:3rem;
+margin-bottom:-7px;
 `
 
 export const FooterWrapper = styled.div`

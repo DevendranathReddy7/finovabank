@@ -15,8 +15,12 @@ const PaymentProvider = ({ children }) => {
     const [paymentData, setPaymentData] = useState({})
     const { currentUser } = useAuth()
     useEffect(() => {
-        getAccounts(currentUser.userId).then((data) => setAccounts(data))
-    }, [])
+        const getAcct = async () => {
+            const data = await getAccounts(currentUser.userId)
+            setAccounts(data)
+        }
+        getAcct()
+    }, [currentUser.userId])
     useEffect(() => {
         setPaymentData({ selectedFromAccount, selectedToAccount, enteredAmount })
     }, [selectedFromAccount, selectedToAccount, enteredAmount])
