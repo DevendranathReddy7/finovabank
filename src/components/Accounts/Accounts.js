@@ -38,12 +38,12 @@ const Accounts = () => {
                     </StyledFirstColumn>
 
                     <div className="balance-funds-container">
-                        <div className="balance-container">
+                        {/* <div className="balance-container">
                             <p className="acctName">Balance</p>
                             <div>
                                 <p><BsCurrencyRupee />{account.balance}</p>
                             </div>
-                        </div>
+                    </div> */}
                         <div className="balance-container">
                             <p className="acctName">Funds</p>
                             <div>
@@ -57,8 +57,9 @@ const Accounts = () => {
                     </div>
 
                 </StyledOuterLi>
-            </StyledLi>)}
-        </div>
+            </StyledLi>)
+            }
+        </div >
     )
 }
 export default Accounts

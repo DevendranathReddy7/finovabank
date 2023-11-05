@@ -9,7 +9,6 @@ const ReviewConfirm = () => {
     const { paymentData, setPaymentData } = usePayments()
 
     const continueHandler = () => {
-        console.log({ ...paymentData, selectedFromAccount: [{ ...paymentData.selectedFromAccount[0], funds: paymentData.selectedFromAccount[0].funds - Number(paymentData.enteredAmount) }, ...paymentData.selectedFromAccount.slice(1)], selectedToAccount: [{ ...paymentData.selectedToAccount[0], funds: paymentData.selectedToAccount[0].funds + Number(paymentData.enteredAmount) }, ...paymentData.selectedToAccount.slice(1)] })
         setPaymentData({ ...paymentData, selectedFromAccount: [{ ...paymentData.selectedFromAccount[0], funds: paymentData.selectedFromAccount[0].funds - Number(paymentData.enteredAmount) }, ...paymentData.selectedFromAccount.slice(1)], selectedToAccount: [{ ...paymentData.selectedToAccount[0], funds: paymentData.selectedToAccount[0].funds + Number(paymentData.enteredAmount) }, ...paymentData.selectedToAccount.slice(1)] })
     }
     return (

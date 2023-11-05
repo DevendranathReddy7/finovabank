@@ -5,15 +5,21 @@ import LinkButton from "../../common/LinkButton"
 import { H3, PrimaryButton, SecondaryButton } from "./PaymentScreen/StyledPaymnetInput"
 import PaymentStatus from "./PaymentStatus"
 import { BsCurrencyRupee } from 'react-icons/bs'
+import { updateRows } from "../../../supabase/apiAccounts"
+import { useAuth } from "../../../context/LoginContext"
 
 const Submit = () => {
-    const [AccountAfterPayment, setAccountAfterPayment] = useState()
-    const { paymentData, setPaymentData } = usePayments()
-    console.log(paymentData)
+    const { paymentData, } = usePayments()
+    const { currentUser } = useAuth()
     useEffect(() => {
-        const newFunds = paymentData.selectedFromAccount[0].funds - Number(paymentData.enteredAmount)
-        const creditFunds = paymentData.selectedToAccount[0].funds + Number(paymentData.enteredAmount)
-    }, [])
+
+        const updateRow = async () => {
+            const data = await updateRows(currentUser.userId, paymentData)
+            console.log(data)
+        }
+        updateRow()
+    }, [currentUser.userId, paymentData])
+
 
     return (
         <div>
