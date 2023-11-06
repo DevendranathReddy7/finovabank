@@ -8,9 +8,32 @@
     display: inline-flex;
 }
 
-.quickLinks {
-    display: flex;
-    margin-left: 50rem;
+@media (max-width: 480px) {
+    .quickLinks {
+        display: flex;
+        margin-left: 2rem;
+    }
+}
+
+@media (max-width: 680px) {
+    .quickLinks {
+        display: flex;
+        margin-left: 10rem;
+    }
+}
+
+@media (min-width: 680px) {
+    .quickLinks {
+        display: flex;
+        margin-left: 30rem;
+    }
+}
+
+@media (min-width: 1023px) {
+    .quickLinks {
+        display: flex;
+        margin-left: 50rem;
+    }
 }
 
 .icon-div {

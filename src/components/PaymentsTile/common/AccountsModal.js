@@ -39,13 +39,13 @@ function AccountsModal(props) {
                                 </div>
                                 <AccountNameDiv>
                                     <p>{acct.accountName}</p>
-                                    <p>{acct.accountNumber}</p>
+                                    <p style={{ marginTop: '-10px' }}>{acct.accountNumber}</p>
                                 </AccountNameDiv>
                             </FirstColumn>
                             <FirstColumn>
                                 <div>
                                     <p>Funds</p>
-                                    <p><BsCurrencyRupee />{acct.funds}</p>
+                                    <p style={{ marginTop: '-10px' }}><BsCurrencyRupee />{acct.funds}</p>
                                 </div>
                             </FirstColumn>
                         </ListItem>

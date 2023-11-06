@@ -1,5 +1,4 @@
 import './Navbar.css'
-import { IoMailUnreadOutline } from 'react-icons/io5'
 import { CiBank } from 'react-icons/ci'
 import { AiOutlineComment, AiFillBell, AiOutlineLogout } from 'react-icons/ai'
 import { useAuth } from '../../context/LoginContext'
@@ -37,10 +36,6 @@ const Navbar = () => {
 
                     <div className='icon-div'>
                         <AiFillBell size={size} />
-                    </div>
-
-                    <div className='icon-div'>
-                        <IoMailUnreadOutline size={size} />
                     </div>
 
                     <div className='icon-div'>

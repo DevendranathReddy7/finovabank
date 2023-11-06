@@ -32,7 +32,7 @@ const Accounts = () => {
                         <div className="accountName-container firstColum">
                             <p className="acctName">{account.accountName}</p>
                             <div>
-                                <p>{account.accountNumber}</p>
+                                <p style={{ marginTop: '-10px' }}>{account.accountNumber}</p>
                             </div>
                         </div>
                     </StyledFirstColumn>
@@ -47,7 +47,7 @@ const Accounts = () => {
                         <div className="balance-container">
                             <p className="acctName">Funds</p>
                             <div>
-                                <p><BsCurrencyRupee />{account.funds}</p>
+                                <p style={{ marginTop: '-10px' }}><BsCurrencyRupee />{account.funds}</p>
                             </div>
                         </div>
                     </div>
