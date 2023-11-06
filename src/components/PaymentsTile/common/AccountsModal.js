@@ -6,13 +6,12 @@ import { AccountNameDiv, CustomModal, FirstColumn, ImgDiv, ListItem, StyledLi } 
 import { usePayments } from '../../../context/paymentContext';
 
 function AccountsModal(props) {
-    const { accounts, paymentData } = usePayments()
+    const { accounts } = usePayments()
     const [isModalOpen, setModalOpen] = useState(true);
 
     // const openModal = () => {
     //     setModalOpen(true);
     // };
-
     const closeModal = () => {
         setModalOpen(false);
     };

@@ -4,6 +4,7 @@ import { createContext } from "react";
 import { getAccounts } from "../supabase/apiAccounts";
 import { useContext } from "react";
 import { useAuth } from "./LoginContext";
+import { useLocation } from "react-router-dom";
 
 const PaymentContext = createContext()
 
@@ -14,6 +15,7 @@ const PaymentProvider = ({ children }) => {
     const [enteredAmount, setEnteredAmount] = useState(0)
     const [paymentData, setPaymentData] = useState({})
     const { currentUser } = useAuth()
+    const fundsChanged = accounts.map(acc => acc.funds)
     useEffect(() => {
         const getAcct = async () => {
             const data = await getAccounts(currentUser.userId)
@@ -21,6 +23,7 @@ const PaymentProvider = ({ children }) => {
         }
         getAcct()
     }, [currentUser.userId])
+
     useEffect(() => {
         setPaymentData({ selectedFromAccount, selectedToAccount, enteredAmount })
     }, [selectedFromAccount, selectedToAccount, enteredAmount])
