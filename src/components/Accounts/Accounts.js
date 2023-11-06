@@ -10,14 +10,12 @@ import { H3 } from "../PaymentsTile/common/PaymentScreen/StyledPaymnetInput";
 import { usePayments } from "../../context/paymentContext";
 
 const Accounts = () => {
-    const [accounts1, setAccounts] = useState([])
+    const [accounts, setAccounts] = useState([])
     const { currentUser } = useAuth()
-    const { accounts, paymentData } = usePayments()
-
-    // useEffect(() => {
-    //     getAccounts(currentUser.userId).then((data) => setAccounts(data))
-    // }, [currentUser.userId, paymentData])
-
+    const { paymentData } = usePayments()
+    useEffect(() => {
+        getAccounts(currentUser.userId).then((data) => setAccounts(data))
+    }, [currentUser.userId, paymentData])
     return (
 
         <div>
