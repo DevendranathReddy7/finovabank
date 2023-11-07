@@ -18,7 +18,12 @@ export const updateRows = async (userid, paymentData) => {
         .update({ 'funds': paymentData.selectedFromAccount[0].funds })
         .eq('userid', userid).eq('accountNumber', paymentData.selectedFromAccount[0].accountNumber)
         .select()
-    return data
+    const { data1, error1 } = await supabase
+        .from('Users')
+        .update({ 'funds': paymentData.selectedToAccount[0].funds })
+        .eq('userid', userid).eq('accountNumber', paymentData.selectedToAccount[0].accountNumber)
+        .select()
+    return data1
 }
 
 export const getPaymnetTypes = async (userid) => {
