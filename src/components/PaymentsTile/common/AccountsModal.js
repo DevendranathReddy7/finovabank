@@ -49,7 +49,7 @@ function AccountsModal(props) {
                                 </div>
                             </FirstColumn>
                         </ListItem>
-                        <hr></hr>
+                        <hr />
                     </StyledLi>
 
                     )}

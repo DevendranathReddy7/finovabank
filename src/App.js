@@ -21,9 +21,6 @@ const App = () => {
             <Route path="/payments" element={<PaymentsTile />} />
             <Route path="/funds-transfer" element={<FundsTransfer />} />
             <Route path="/bill-payment" element={<BillPayment />}></Route>
-            <Route path="/imt" element={<p>paymnet</p>}></Route>
-            <Route path="/pay-any-one" element={<p>paymnet</p>}></Route>
-            <Route path="/credit-card" element={<p>pa1ymnet</p>}></Route>
             <Route path="/review-confirm" element={<ReviewConfirm />}></Route>
             <Route path="/submit" element={<Submit />}></Route>
             <Route path="/settings" element={<Settings />}>
