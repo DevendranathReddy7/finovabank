@@ -30,8 +30,19 @@ border-radius: 3px;
 border-width: 2px;
 
 `
+export const StyledPaymentLi = styled.li`
+border-style:solid;
+list-style-type:none;
+border-radius:3px;
+border-width: 1px;
+height: 4.3rem;
+width: 90%;
+margin:1rem 3rem;
+border-color:${(props) => props.sty === "true" ? 'red' : 'black'};
+`
 export const StyledPaymentInput = styled.input`
 border-style:solid;
+list-style-type:none;
 border-radius:3px;
 border-width: 1px;
 height: 3rem;
@@ -39,7 +50,25 @@ width: 90%;
 margin:1rem 3rem;
 border-color:${(props) => props.sty === "true" ? 'red' : 'black'};
 `
-
+export const StyledSelectedAccountDiv = styled.div`
+display: flex;
+`
+export const StyledAccount1stColumn = styled.div`
+display: flex;
+margin-right:20rem;
+@media (max-width:1030px) {
+    margin-right:15rem;
+    
+}
+@media (max-width:780px) {
+    margin-right:10rem;
+    
+}
+`
+export const ImgDiv = styled.img`
+margin:20px 20px;
+height:35px;
+`
 export const Label = styled.label`
 display:block;
 margin-left:3rem;
