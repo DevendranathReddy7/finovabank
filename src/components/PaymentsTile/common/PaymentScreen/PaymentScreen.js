@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Footer, FooterWrapper, H3, Label, PaymentWrapper, PrimaryButton, StyledPaymentInput } from "./StyledPaymnetInput"
+import { Footer, FooterWrapper, H3, ImgDiv, Label, PaymentWrapper, PrimaryButton, StyledAccount1stColumn, StyledPaymentInput, StyledPaymentLi, StyledSelectedAccountDiv } from "./StyledPaymnetInput"
 import { getAccounts } from "../../../../supabase/apiAccounts"
 import { useAuth } from "../../../../context/LoginContext"
 import PaymentsAccounts from "../../../common/PaymentsAccounts"
@@ -57,12 +57,44 @@ const PaymentScreen = (props) => {
                 <form onSubmit={submitHandler}>
                     <div>
                         <Label>From</Label>
-                        <StyledPaymentInput type="text" placeholder={`${paymentData.selectedFromAccount[0]?.accountNumber ?? 'Select From Account'}`} onClick={() => toggleContainer('from')} />
+                        <StyledPaymentLi aria-label="select from account" onClick={() => toggleContainer('from')} >{
+                            <StyledSelectedAccountDiv>
+                                <StyledAccount1stColumn>
+                                    <ImgDiv src={paymentData.selectedFromAccount[0].icon} />
+                                    <div>
+                                        <p >{paymentData.selectedFromAccount[0].accountName}</p>
+                                        <p style={{ marginTop: '-12px' }}>{paymentData.selectedFromAccount[0].accountNumber}</p>
+                                    </div>
+                                </StyledAccount1stColumn>
+                                <StyledAccount1stColumn>
+                                    <div>
+                                        <p >Funds</p>
+                                        <p style={{ marginTop: '-12px' }}>{paymentData.selectedFromAccount[0].funds}</p>
+                                    </div>
+                                </StyledAccount1stColumn>
+                            </StyledSelectedAccountDiv>
+                        }</StyledPaymentLi>
                         {isFromAccountClicked && <AccountsModal which='From' accounts={accounts} selectedAccount={fromAccountHandler} />}
                     </div>
                     <div>
                         <Label>To</Label>
-                        <StyledPaymentInput type="text" placeholder={`${paymentData.selectedToAccount[0]?.accountNumber ?? 'Select To Account'}`} onClick={() => toggleContainer('to')} />
+                        <StyledPaymentLi aria-label="select to account" onClick={() => toggleContainer('to')} >{
+                            <StyledSelectedAccountDiv>
+                                <StyledAccount1stColumn>
+                                    <ImgDiv src={paymentData.selectedToAccount[0].icon} />
+                                    <div>
+                                        <p>{paymentData.selectedToAccount[0].accountName}</p>
+                                        <p style={{ marginTop: '-12px' }}>{paymentData.selectedToAccount[0].accountNumber}</p>
+                                    </div>
+                                </StyledAccount1stColumn>
+                                <StyledAccount1stColumn>
+                                    <div>
+                                        <p>Funds</p>
+                                        <p style={{ marginTop: '-12px' }}>{paymentData.selectedToAccount[0].funds}</p>
+                                    </div>
+                                </StyledAccount1stColumn>
+                            </StyledSelectedAccountDiv>
+                        }</StyledPaymentLi>
                         {isToAccountClicked && <AccountsModal which='To' accounts={accounts} selectedAccount={toAccountHandler} />}
                     </div>
                     <div>

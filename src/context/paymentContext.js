@@ -14,14 +14,14 @@ const PaymentProvider = ({ children }) => {
     const [enteredAmount, setEnteredAmount] = useState(0)
     const [paymentData, setPaymentData] = useState({})
     const { currentUser } = useAuth()
-    const fundsChanged = accounts.map(acc => acc.funds)
+    //const fundsChanged = accounts.map(acc => acc.funds)
     useEffect(() => {
         const getAcct = async () => {
             const data = await getAccounts(currentUser.userId)
             setAccounts(data)
         }
         getAcct()
-    }, [currentUser.userId, fundsChanged])
+    }, [currentUser.userId])
     useEffect(() => {
         setPaymentData({ selectedFromAccount, selectedToAccount, enteredAmount })
     }, [selectedFromAccount, selectedToAccount, enteredAmount])
