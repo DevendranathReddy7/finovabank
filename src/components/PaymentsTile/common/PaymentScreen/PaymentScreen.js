@@ -58,42 +58,44 @@ const PaymentScreen = (props) => {
                     <div>
                         <Label>From</Label>
                         <StyledPaymentLi aria-label="select from account" onClick={() => toggleContainer('from')} >{
-                            <StyledSelectedAccountDiv>
-                                <StyledAccount1stColumn>
-                                    <ImgDiv src={paymentData.selectedFromAccount[0].icon} />
-                                    <div>
-                                        <p >{paymentData.selectedFromAccount[0].accountName}</p>
-                                        <p style={{ marginTop: '-12px' }}>{paymentData.selectedFromAccount[0].accountNumber}</p>
-                                    </div>
-                                </StyledAccount1stColumn>
-                                <StyledAccount1stColumn>
-                                    <div>
-                                        <p >Funds</p>
-                                        <p style={{ marginTop: '-12px' }}>{paymentData.selectedFromAccount[0].funds}</p>
-                                    </div>
-                                </StyledAccount1stColumn>
-                            </StyledSelectedAccountDiv>
+                            paymentData?.selectedFromAccount != '' ?
+                                <StyledSelectedAccountDiv>
+                                    <StyledAccount1stColumn>
+                                        <ImgDiv src={paymentData.selectedFromAccount[0].icon} />
+                                        <div>
+                                            <p >{paymentData.selectedFromAccount[0].accountName}</p>
+                                            <p style={{ marginTop: '-12px' }}>{paymentData.selectedFromAccount[0].accountNumber}</p>
+                                        </div>
+                                    </StyledAccount1stColumn>
+                                    <StyledAccount1stColumn>
+                                        <div>
+                                            <p >Funds</p>
+                                            <p style={{ marginTop: '-12px' }}>{paymentData.selectedFromAccount[0].funds}</p>
+                                        </div>
+                                    </StyledAccount1stColumn>
+                                </StyledSelectedAccountDiv> : <p style={{ margin: '24px 10px' }}>Select from account</p>
                         }</StyledPaymentLi>
                         {isFromAccountClicked && <AccountsModal which='From' accounts={accounts} selectedAccount={fromAccountHandler} />}
                     </div>
                     <div>
                         <Label>To</Label>
                         <StyledPaymentLi aria-label="select to account" onClick={() => toggleContainer('to')} >{
-                            <StyledSelectedAccountDiv>
-                                <StyledAccount1stColumn>
-                                    <ImgDiv src={paymentData.selectedToAccount[0].icon} />
-                                    <div>
-                                        <p>{paymentData.selectedToAccount[0].accountName}</p>
-                                        <p style={{ marginTop: '-12px' }}>{paymentData.selectedToAccount[0].accountNumber}</p>
-                                    </div>
-                                </StyledAccount1stColumn>
-                                <StyledAccount1stColumn>
-                                    <div>
-                                        <p>Funds</p>
-                                        <p style={{ marginTop: '-12px' }}>{paymentData.selectedToAccount[0].funds}</p>
-                                    </div>
-                                </StyledAccount1stColumn>
-                            </StyledSelectedAccountDiv>
+                            paymentData?.selectedToAccount != '' ?
+                                <StyledSelectedAccountDiv>
+                                    <StyledAccount1stColumn>
+                                        <ImgDiv src={paymentData.selectedToAccount[0].icon} />
+                                        <div>
+                                            <p>{paymentData.selectedToAccount[0].accountName}</p>
+                                            <p style={{ marginTop: '-12px' }}>{paymentData.selectedToAccount[0].accountNumber}</p>
+                                        </div>
+                                    </StyledAccount1stColumn>
+                                    <StyledAccount1stColumn>
+                                        <div>
+                                            <p>Funds</p>
+                                            <p style={{ marginTop: '-12px' }}>{paymentData.selectedToAccount[0].funds}</p>
+                                        </div>
+                                    </StyledAccount1stColumn>
+                                </StyledSelectedAccountDiv> : <p style={{ margin: '24px 10px' }}>Select to account</p>
                         }</StyledPaymentLi>
                         {isToAccountClicked && <AccountsModal which='To' accounts={accounts} selectedAccount={toAccountHandler} />}
                     </div>
