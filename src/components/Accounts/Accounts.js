@@ -12,10 +12,13 @@ import { usePayments } from "../../context/paymentContext";
 const Accounts = () => {
     const [accounts, setAccounts] = useState([])
     const { currentUser } = useAuth()
-    const { paymentData } = usePayments()
+    const { paymentData, setPaymentData } = usePayments()
     useEffect(() => {
         getAccounts(currentUser.userId).then((data) => setAccounts(data))
     }, [currentUser.userId, paymentData])
+    // useEffect(() => {
+    //     setPaymentData({})
+    // }, [])
     return (
 
         <div>

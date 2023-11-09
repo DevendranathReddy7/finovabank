@@ -13,7 +13,7 @@ const PaymentScreen = (props) => {
     const [isFromAccountClicked, setIsFromAccountClicked] = useState(false);
     const [isToAccountClicked, setIsToAccountClicked] = useState(false);
     const [amountCheck, setAmountCheck] = useState(false)
-    const { accounts, setSelectedFromAccount, setSelectedToAccount, setEnteredAmount, paymentData } = usePayments()
+    const { accounts, setSelectedFromAccount, setSelectedToAccount, setEnteredAmount, paymentData, setPaymentData } = usePayments()
     const toggleContainer = (id) => {
         if (id === 'from') {
             setIsFromAccountClicked((prev) => !prev);
@@ -24,6 +24,10 @@ const PaymentScreen = (props) => {
             setIsFromAccountClicked(false)
         }
     };
+    useEffect(() => {
+        setPaymentData({ selectedFromAccount: '', selectedToAccount: '', enteredAmount: 0 })
+    }, [])
+    console.log(paymentData)
     const fromAccountHandler = (id) => {
         const fromAccount = accounts.filter(acct => acct.id === id)
         setSelectedFromAccount(fromAccount)
@@ -58,7 +62,7 @@ const PaymentScreen = (props) => {
                     <div>
                         <Label>From</Label>
                         <StyledPaymentLi aria-label="select from account" onClick={() => toggleContainer('from')} >{
-                            paymentData?.selectedFromAccount != '' ?
+                            (paymentData?.selectedFromAccount !== '' && Object.keys(paymentData.selectedFromAccount[0]).length > 0) ?
                                 <StyledSelectedAccountDiv>
                                     <StyledAccount1stColumn>
                                         <ImgDiv src={paymentData.selectedFromAccount[0].icon} />
@@ -80,7 +84,7 @@ const PaymentScreen = (props) => {
                     <div>
                         <Label>To</Label>
                         <StyledPaymentLi aria-label="select to account" onClick={() => toggleContainer('to')} >{
-                            paymentData?.selectedToAccount != '' ?
+                            (paymentData?.selectedToAccount !== '' && Object.keys(paymentData.selectedToAccount[0]).length > 0) ?
                                 <StyledSelectedAccountDiv>
                                     <StyledAccount1stColumn>
                                         <ImgDiv src={paymentData.selectedToAccount[0].icon} />
