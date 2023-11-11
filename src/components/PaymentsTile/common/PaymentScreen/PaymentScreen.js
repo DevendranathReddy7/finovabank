@@ -1,8 +1,5 @@
-import { useEffect, useState } from "react"
-import { Footer, FooterWrapper, H3, ImgDiv, Label, PaymentWrapper, PrimaryButton, StyledAccount1stColumn, StyledPaymentInput, StyledPaymentLi, StyledSelectedAccountDiv } from "./StyledPaymnetInput"
-import { getAccounts } from "../../../../supabase/apiAccounts"
-import { useAuth } from "../../../../context/LoginContext"
-import PaymentsAccounts from "../../../common/PaymentsAccounts"
+import { useState } from "react"
+import { H3, ImgDiv, Label, PaymentWrapper, PrimaryButton, StyledAccount1stColumn, StyledPaymentInput, StyledPaymentLi, StyledSelectedAccountDiv } from "./StyledPaymnetInput"
 import AccountsModal from "../AccountsModal"
 import LinkButton from "../../../common/LinkButton"
 import { usePayments } from "../../../../context/paymentContext"
@@ -49,19 +46,10 @@ const PaymentScreen = (props) => {
             setEnteredAmount(e.target.value)
             setAmountCheck(false)
         }
-
     }
 
     const submitHandler = () => {
-        // setPaymentData({
-        //     fromAccount: selectedFromAccount[0].accountNumber,
-        //     fromAccountName: selectedFromAccount[0].accountName,
-        //     toAccount: selectedToAccount[0].accountNumber,
-        //     toAccountName: selectedToAccount[0].accountName,
-        //     amount: enteredAmount
-        // })
         setPaymentData({ selectedFromAccount, selectedToAccount, enteredAmount })
-
     }
     return (
         <>

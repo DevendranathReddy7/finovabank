@@ -2,10 +2,7 @@ import { StyledFirstColumn, StyledLi, StyledOuterLi } from "./StyledAccounts"
 import { AiOutlineRight } from 'react-icons/ai'
 import { BsCurrencyRupee } from 'react-icons/bs'
 import './Account.css'
-import { useEffect, useState } from "react";
-import { getAccounts } from "../../supabase/apiAccounts";
 import Loader from "../common/Loader";
-import { useAuth } from "../../context/LoginContext";
 import { H3 } from "../PaymentsTile/common/PaymentScreen/StyledPaymnetInput";
 import { usePayments } from "../../context/paymentContext";
 
