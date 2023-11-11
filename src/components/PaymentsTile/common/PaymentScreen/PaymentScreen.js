@@ -12,8 +12,11 @@ import { ValidationError } from "../../../common/Error"
 const PaymentScreen = (props) => {
     const [isFromAccountClicked, setIsFromAccountClicked] = useState(false);
     const [isToAccountClicked, setIsToAccountClicked] = useState(false);
+    const [selectedFromAccount, setSelectedFromAccount] = useState('')
+    const [selectedToAccount, setSelectedToAccount] = useState('')
     const [amountCheck, setAmountCheck] = useState(false)
-    const { accounts, setSelectedFromAccount, setSelectedToAccount, setEnteredAmount, paymentData, setPaymentData } = usePayments()
+    const { accounts, setEnteredAmount, paymentData, setPaymentData } = usePayments()
+
     const toggleContainer = (id) => {
         if (id === 'from') {
             setIsFromAccountClicked((prev) => !prev);
@@ -24,10 +27,7 @@ const PaymentScreen = (props) => {
             setIsFromAccountClicked(false)
         }
     };
-    useEffect(() => {
-        setPaymentData({ selectedFromAccount: '', selectedToAccount: '', enteredAmount: 0 })
-    }, [])
-    console.log(paymentData)
+
     const fromAccountHandler = (id) => {
         const fromAccount = accounts.filter(acct => acct.id === id)
         setSelectedFromAccount(fromAccount)
@@ -62,19 +62,19 @@ const PaymentScreen = (props) => {
                     <div>
                         <Label>From</Label>
                         <StyledPaymentLi aria-label="select from account" onClick={() => toggleContainer('from')} >{
-                            (paymentData?.selectedFromAccount !== '' && Object.keys(paymentData.selectedFromAccount[0]).length > 0) ?
+                            (selectedFromAccount !== '' && Object.keys(selectedFromAccount[0]).length > 0) ?
                                 <StyledSelectedAccountDiv>
                                     <StyledAccount1stColumn>
-                                        <ImgDiv src={paymentData.selectedFromAccount[0].icon} />
+                                        <ImgDiv src={selectedFromAccount[0].icon} />
                                         <div>
-                                            <p >{paymentData.selectedFromAccount[0].accountName}</p>
-                                            <p style={{ marginTop: '-12px' }}>{paymentData.selectedFromAccount[0].accountNumber}</p>
+                                            <p >{selectedFromAccount[0].accountName}</p>
+                                            <p style={{ marginTop: '-12px' }}>{selectedFromAccount[0].accountNumber}</p>
                                         </div>
                                     </StyledAccount1stColumn>
                                     <StyledAccount1stColumn>
                                         <div>
                                             <p >Funds</p>
-                                            <p style={{ marginTop: '-12px' }}>{paymentData.selectedFromAccount[0].funds}</p>
+                                            <p style={{ marginTop: '-12px' }}>{selectedFromAccount[0].funds}</p>
                                         </div>
                                     </StyledAccount1stColumn>
                                 </StyledSelectedAccountDiv> : <p style={{ margin: '24px 10px' }}>Select from account</p>
@@ -84,19 +84,19 @@ const PaymentScreen = (props) => {
                     <div>
                         <Label>To</Label>
                         <StyledPaymentLi aria-label="select to account" onClick={() => toggleContainer('to')} >{
-                            (paymentData?.selectedToAccount !== '' && Object.keys(paymentData.selectedToAccount[0]).length > 0) ?
+                            (selectedToAccount !== '' && Object.keys(selectedToAccount[0]).length > 0) ?
                                 <StyledSelectedAccountDiv>
                                     <StyledAccount1stColumn>
-                                        <ImgDiv src={paymentData.selectedToAccount[0].icon} />
+                                        <ImgDiv src={selectedToAccount[0].icon} />
                                         <div>
-                                            <p>{paymentData.selectedToAccount[0].accountName}</p>
-                                            <p style={{ marginTop: '-12px' }}>{paymentData.selectedToAccount[0].accountNumber}</p>
+                                            <p>{selectedToAccount[0].accountName}</p>
+                                            <p style={{ marginTop: '-12px' }}>{selectedToAccount[0].accountNumber}</p>
                                         </div>
                                     </StyledAccount1stColumn>
                                     <StyledAccount1stColumn>
                                         <div>
                                             <p>Funds</p>
-                                            <p style={{ marginTop: '-12px' }}>{paymentData.selectedToAccount[0].funds}</p>
+                                            <p style={{ marginTop: '-12px' }}>{selectedToAccount[0].funds}</p>
                                         </div>
                                     </StyledAccount1stColumn>
                                 </StyledSelectedAccountDiv> : <p style={{ margin: '24px 10px' }}>Select to account</p>

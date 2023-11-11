@@ -10,11 +10,6 @@ const FAKE_USER = [{
     email: "77338262",
     password: "dev123",
     userId: '1',
-}, {
-    name: "Rahul",
-    email: "78435647",
-    password: "rahul123",
-    userId: '2',
 }];
 
 function reducer(state, action) {
@@ -33,15 +28,14 @@ function AuthProvider({ children }) {
     const [loginError, setLoginError] = useState('')
     const [{ user, isAuthenticated }, dispatch] = useReducer(reducer, initialState)
     function login(email, password) {
-        FAKE_USER.map(user => {
-            if (user.email === email && user.password === password) {
-                dispatch({ type: 'login', payload: FAKE_USER })
-                setCurrentUser(user)
-            } else {
-                setLoginError('Invalid Registration Id or Password')
-            }
+
+        if (FAKE_USER[0].email === email && FAKE_USER[0].password === password) {
+            dispatch({ type: 'login', payload: FAKE_USER[0] })
+            setCurrentUser(FAKE_USER[0])
+        } else {
+            setLoginError('Invalid Registration Id or Password')
         }
-        )
+
 
     }
     function logout() {

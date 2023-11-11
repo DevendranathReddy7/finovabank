@@ -33,7 +33,7 @@ const PaymentProvider = ({ children }) => {
 function usePayments() {
     const context = useContext(PaymentContext);
     if (context === undefined) {
-        throw new Error("AuthContext was used outside of AuthProvider")
+        throw new Error("PaymentContext was used outside of PaymentProvider")
     }
     return context
 }

@@ -10,58 +10,44 @@ import { H3 } from "../PaymentsTile/common/PaymentScreen/StyledPaymnetInput";
 import { usePayments } from "../../context/paymentContext";
 
 const Accounts = () => {
-    const [accounts, setAccounts] = useState([])
-    const { currentUser } = useAuth()
-    const { paymentData, setPaymentData } = usePayments()
-    useEffect(() => {
-        getAccounts(currentUser.userId).then((data) => setAccounts(data))
-    }, [currentUser.userId, paymentData])
-    // useEffect(() => {
-    //     setPaymentData({})
-    // }, [])
-    return (
+    const { accounts } = usePayments()
 
+    return (
         <div>
             {accounts?.length === 0 && <Loader />}
             {accounts?.length > 0 ? <H3>Your Account's</H3> : ''}
+            {accounts.code === '22P02' ? 'No accounts found' :
+                <>{accounts?.map(account => <StyledLi key={account.id}>
+                    <StyledOuterLi>
+                        <StyledFirstColumn>
+                            <div className="icon">
+                                {/* <FaCcMastercard size='50px' /> */}
+                                <img src={account.icon} alt='icon' />
+                            </div>
+                            <div className="accountName-container firstColum">
+                                <p className="acctName">{account.accountName}</p>
+                                <div>
+                                    <p style={{ marginTop: '-10px' }}>{account.accountNumber}</p>
+                                </div>
+                            </div>
+                        </StyledFirstColumn>
 
-            {accounts?.map(account => <StyledLi key={account.id}>
-                <StyledOuterLi>
-                    <StyledFirstColumn>
-                        <div className="icon">
-                            {/* <FaCcMastercard size='50px' /> */}
-                            <img src={account.icon} alt='icon' />
-                        </div>
-                        <div className="accountName-container firstColum">
-                            <p className="acctName">{account.accountName}</p>
-                            <div>
-                                <p style={{ marginTop: '-10px' }}>{account.accountNumber}</p>
+                        <div className="balance-funds-container">
+                            <div className="balance-container">
+                                <p className="acctName">Funds</p>
+                                <div>
+                                    <p style={{ marginTop: '-10px' }}><BsCurrencyRupee />{account.funds}</p>
+                                </div>
                             </div>
                         </div>
-                    </StyledFirstColumn>
 
-                    <div className="balance-funds-container">
-                        {/* <div className="balance-container">
-                            <p className="acctName">Balance</p>
-                            <div>
-                                <p><BsCurrencyRupee />{account.balance}</p>
-                            </div>
-                    </div> */}
-                        <div className="balance-container">
-                            <p className="acctName">Funds</p>
-                            <div>
-                                <p style={{ marginTop: '-10px' }}><BsCurrencyRupee />{account.funds}</p>
-                            </div>
+                        <div className="arrow">
+                            <AiOutlineRight />
                         </div>
-                    </div>
 
-                    <div className="arrow">
-                        <AiOutlineRight />
-                    </div>
-
-                </StyledOuterLi>
-            </StyledLi>)
-            }
+                    </StyledOuterLi>
+                </StyledLi>)
+                }</>}
         </div >
     )
 }
