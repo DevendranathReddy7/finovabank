@@ -14,8 +14,9 @@ const PaymentScreen = (props) => {
     const [isToAccountClicked, setIsToAccountClicked] = useState(false);
     const [selectedFromAccount, setSelectedFromAccount] = useState('')
     const [selectedToAccount, setSelectedToAccount] = useState('')
+    const [enteredAmount, setEnteredAmount] = useState('')
     const [amountCheck, setAmountCheck] = useState(false)
-    const { accounts, setEnteredAmount, paymentData, setPaymentData } = usePayments()
+    const { accounts, setPaymentData } = usePayments()
 
     const toggleContainer = (id) => {
         if (id === 'from') {
@@ -40,7 +41,7 @@ const PaymentScreen = (props) => {
 
     const amountHandler = (e) => {
 
-        if (Number(e.target.value) > paymentData.selectedFromAccount[0].funds) {
+        if (Number(e.target.value) > selectedFromAccount[0].funds) {
             setAmountCheck(true)
         } else if ((Number(e.target.value) <= 0)) {
             setAmountCheck(true)
@@ -51,14 +52,22 @@ const PaymentScreen = (props) => {
 
     }
 
-    const submitHandler = (e) => {
-        e.preventDefault()
+    const submitHandler = () => {
+        // setPaymentData({
+        //     fromAccount: selectedFromAccount[0].accountNumber,
+        //     fromAccountName: selectedFromAccount[0].accountName,
+        //     toAccount: selectedToAccount[0].accountNumber,
+        //     toAccountName: selectedToAccount[0].accountName,
+        //     amount: enteredAmount
+        // })
+        setPaymentData({ selectedFromAccount, selectedToAccount, enteredAmount })
+
     }
     return (
         <>
             <H3>{props.title}</H3>
             <PaymentWrapper>
-                <form onSubmit={submitHandler}>
+                <form>
                     <div>
                         <Label>From</Label>
                         <StyledPaymentLi aria-label="select from account" onClick={() => toggleContainer('from')} >{
@@ -109,7 +118,7 @@ const PaymentScreen = (props) => {
                         {amountCheck && <ValidationError msg='Please enter a valid amount'></ValidationError>}
                     </div>
                     <div style={{ display: "flex", justifyContent: "flex-end", padding: '3px', marginRight: '4rem' }}>
-                        <LinkButton to='/review-confirm' ><PrimaryButton disabled={amountCheck}>Continue</PrimaryButton></LinkButton>
+                        <LinkButton to='/review-confirm' ><PrimaryButton disabled={amountCheck} onClick={submitHandler}>Continue</PrimaryButton></LinkButton>
                     </div>
                 </form>
             </PaymentWrapper >

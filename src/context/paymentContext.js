@@ -9,12 +9,8 @@ const PaymentContext = createContext()
 
 const PaymentProvider = ({ children }) => {
     const [accounts, setAccounts] = useState([])
-    const [selectedFromAccount, setSelectedFromAccount] = useState('')
-    const [selectedToAccount, setSelectedToAccount] = useState('')
-    const [enteredAmount, setEnteredAmount] = useState(0)
     const [paymentData, setPaymentData] = useState({})
     const { currentUser } = useAuth()
-    //const fundsChanged = accounts.map(acc => acc.funds)
     useEffect(() => {
         const getAcct = async () => {
             const data = await getAccounts(currentUser.userId)
@@ -22,11 +18,7 @@ const PaymentProvider = ({ children }) => {
         }
         getAcct()
     }, [currentUser.userId])
-    useEffect(() => {
-        setPaymentData({ selectedFromAccount, selectedToAccount, enteredAmount })
-    }, [selectedFromAccount, selectedToAccount, enteredAmount])
-
-    return <PaymentContext.Provider value={{ accounts, paymentData, setPaymentData, setSelectedFromAccount, setSelectedToAccount, setEnteredAmount }}>{children}</PaymentContext.Provider>
+    return <PaymentContext.Provider value={{ accounts, paymentData, setPaymentData }}>{children}</PaymentContext.Provider>
 
 }
 
