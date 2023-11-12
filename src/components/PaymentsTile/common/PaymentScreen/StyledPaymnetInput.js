@@ -35,7 +35,7 @@ border-style:solid;
 list-style-type:none;
 border-radius:3px;
 border-width: 1px;
-height: 4.3rem;
+height: 4.0rem;
 width: 90%;
 margin:1rem 3rem;
 border-color:${(props) => props.sty === "true" ? 'red' : 'black'};

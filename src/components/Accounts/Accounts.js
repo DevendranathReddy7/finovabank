@@ -13,7 +13,7 @@ const Accounts = () => {
         <div>
             {accounts?.length === 0 && <Loader />}
             {accounts?.length > 0 ? <H3>Your Account's</H3> : ''}
-            {accounts.code === '22P02' ? 'No accounts found' :
+            {accounts.code === '22P02' ? <Loader /> :
                 <>{accounts?.map(account => <StyledLi key={account.id}>
                     <StyledOuterLi>
                         <StyledFirstColumn>
@@ -38,7 +38,7 @@ const Accounts = () => {
                             </div>
                         </div>
 
-                        <div className="arrow">
+                        <div style={{ display: "flex", justifyContent: "flex-end" }}>
                             <AiOutlineRight />
                         </div>
 

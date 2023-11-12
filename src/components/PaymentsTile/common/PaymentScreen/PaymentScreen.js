@@ -4,6 +4,8 @@ import AccountsModal from "../AccountsModal"
 import LinkButton from "../../../common/LinkButton"
 import { usePayments } from "../../../../context/paymentContext"
 import { ValidationError } from "../../../common/Error"
+import { useNavigate } from "react-router-dom"
+
 
 
 const PaymentScreen = (props) => {
@@ -13,8 +15,10 @@ const PaymentScreen = (props) => {
     const [selectedToAccount, setSelectedToAccount] = useState('')
     const [enteredAmount, setEnteredAmount] = useState('')
     const [amountCheck, setAmountCheck] = useState(false)
+    const [fromAccCheck, setFromAccCheck] = useState(false)
+    const [toAccCheck, setToAccCheck] = useState(false)
     const { accounts, setPaymentData } = usePayments()
-
+    const navigate = useNavigate()
     const toggleContainer = (id) => {
         if (id === 'from') {
             setIsFromAccountClicked((prev) => !prev);
@@ -38,9 +42,9 @@ const PaymentScreen = (props) => {
 
     const amountHandler = (e) => {
 
-        if (Number(e.target.value) > selectedFromAccount[0].funds) {
+        if ((Number(e.target.value) <= 0)) {
             setAmountCheck(true)
-        } else if ((Number(e.target.value) <= 0)) {
+        } else if (e.target.value === '') {
             setAmountCheck(true)
         } else {
             setEnteredAmount(e.target.value)
@@ -48,14 +52,36 @@ const PaymentScreen = (props) => {
         }
     }
 
-    const submitHandler = () => {
-        setPaymentData({ selectedFromAccount, selectedToAccount, enteredAmount })
+    const continueHandler = () => {
+
+        if (!selectedFromAccount) {
+            setFromAccCheck(true)
+        }
+        else if (!selectedToAccount) {
+            setFromAccCheck(false)
+            setToAccCheck(true)
+        }
+        else if (!enteredAmount) {
+            setFromAccCheck(false)
+            setToAccCheck(false)
+            setAmountCheck(true)
+        } else {
+            setAmountCheck(false)
+            setFromAccCheck(false)
+            setToAccCheck(false)
+            setPaymentData({ selectedFromAccount, selectedToAccount, enteredAmount })
+            navigate('/review-confirm')
+        }
+    }
+
+    const submitHandler = (e) => {
+        e.preventDefault()
     }
     return (
         <>
             <H3>{props.title}</H3>
             <PaymentWrapper>
-                <form>
+                <form onSubmit={submitHandler}>
                     <div>
                         <Label>From</Label>
                         <StyledPaymentLi aria-label="select from account" onClick={() => toggleContainer('from')} >{
@@ -74,9 +100,11 @@ const PaymentScreen = (props) => {
                                             <p style={{ marginTop: '-12px' }}>{selectedFromAccount[0].funds}</p>
                                         </div>
                                     </StyledAccount1stColumn>
-                                </StyledSelectedAccountDiv> : <p style={{ margin: '24px 10px' }}>Select from account</p>
+                                </StyledSelectedAccountDiv> : <p style={{ margin: '20px 10px' }}>Select from account</p>
                         }</StyledPaymentLi>
                         {isFromAccountClicked && <AccountsModal which='From' accounts={accounts} selectedAccount={fromAccountHandler} />}
+                        {fromAccCheck && <ValidationError msg='Please select a From account'></ValidationError>}
+
                     </div>
                     <div>
                         <Label>To</Label>
@@ -96,9 +124,11 @@ const PaymentScreen = (props) => {
                                             <p style={{ marginTop: '-12px' }}>{selectedToAccount[0].funds}</p>
                                         </div>
                                     </StyledAccount1stColumn>
-                                </StyledSelectedAccountDiv> : <p style={{ margin: '24px 10px' }}>Select to account</p>
+                                </StyledSelectedAccountDiv> : <p style={{ margin: '20px 10px' }}>Select to account</p>
                         }</StyledPaymentLi>
                         {isToAccountClicked && <AccountsModal which='To' accounts={accounts} selectedAccount={toAccountHandler} />}
+                        {toAccCheck && <ValidationError msg='Please select a To account'></ValidationError>}
+
                     </div>
                     <div>
                         <Label>Amount</Label>
@@ -106,7 +136,7 @@ const PaymentScreen = (props) => {
                         {amountCheck && <ValidationError msg='Please enter a valid amount'></ValidationError>}
                     </div>
                     <div style={{ display: "flex", justifyContent: "flex-end", padding: '3px', marginRight: '4rem' }}>
-                        <LinkButton to='/review-confirm' ><PrimaryButton disabled={amountCheck} onClick={submitHandler}>Continue</PrimaryButton></LinkButton>
+                        <PrimaryButton disabled={amountCheck} onClick={continueHandler}>Continue</PrimaryButton>
                     </div>
                 </form>
             </PaymentWrapper >
