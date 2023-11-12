@@ -69,13 +69,19 @@ const PaymentScreen = (props) => {
             setAmountCheck(false)
             setFromAccCheck(false)
             setToAccCheck(false)
-            setPaymentData({ selectedFromAccount, selectedToAccount, enteredAmount })
-            navigate('/review-confirm')
+            if (enteredAmount > selectedFromAccount[0].funds) {
+                setAmountCheck(true)
+            } else {
+                setAmountCheck(false)
+                setPaymentData({ selectedFromAccount, selectedToAccount, enteredAmount })
+                navigate('/review-confirm')
+            }
+
         }
     }
 
     const submitHandler = (e) => {
-        e.preventDefault()
+        e.preventDefault();
     }
     return (
         <>
@@ -102,7 +108,7 @@ const PaymentScreen = (props) => {
                                     </StyledAccount1stColumn>
                                 </StyledSelectedAccountDiv> : <p style={{ margin: '20px 10px' }}>Select from account</p>
                         }</StyledPaymentLi>
-                        {isFromAccountClicked && <AccountsModal which='From' accounts={accounts} selectedAccount={fromAccountHandler} />}
+                        {isFromAccountClicked && <AccountsModal which='From' accounts={accounts} selectedAccount={fromAccountHandler} acc={selectedToAccount} />}
                         {fromAccCheck && <ValidationError msg='Please select a From account'></ValidationError>}
 
                     </div>
@@ -126,7 +132,7 @@ const PaymentScreen = (props) => {
                                     </StyledAccount1stColumn>
                                 </StyledSelectedAccountDiv> : <p style={{ margin: '20px 10px' }}>Select to account</p>
                         }</StyledPaymentLi>
-                        {isToAccountClicked && <AccountsModal which='To' accounts={accounts} selectedAccount={toAccountHandler} />}
+                        {isToAccountClicked && <AccountsModal which='To' accounts={accounts} selectedAccount={toAccountHandler} acc={selectedFromAccount} />}
                         {toAccCheck && <ValidationError msg='Please select a To account'></ValidationError>}
 
                     </div>

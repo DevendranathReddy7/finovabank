@@ -22,10 +22,18 @@ list-style-type:none;
 background-color: transparent;
 margin:1px 14px;
 `
+
 export const ListItem = styled.div`
 display: inline-flex;
 justify-content: space-between;
 width: 100%;
+
+${(props) =>
+        props.disable &&
+        `
+    cursor: not-allowed;
+    background-color: #eee; 
+  `};
 `
 
 export const FirstColumn = styled.div`

@@ -52,6 +52,7 @@ border-color:${(props) => props.sty === "true" ? 'red' : 'black'};
 `
 export const StyledSelectedAccountDiv = styled.div`
 display: flex;
+justify-content:space-between;
 `
 export const StyledAccount1stColumn = styled.div`
 display: flex;

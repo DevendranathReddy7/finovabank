@@ -23,6 +23,7 @@ function AccountsModal(props) {
         setModalOpen(false)
         props.selectedAccount(id)
     }
+    console.log(props.acc)
     return (
         <div>
             {isModalOpen && (
@@ -32,24 +33,29 @@ function AccountsModal(props) {
                         <button onClick={closeModal} >X</button>
                     </div>
                     {accounts?.map(acct => <StyledLi key={acct.id} onClick={() => { clickHandler(acct.id) }}>
-                        <ListItem>
-                            <FirstColumn>
-                                <div>
-                                    <ImgDiv src={acct.icon} alt='icon' />
-                                </div>
-                                <AccountNameDiv>
-                                    <p>{acct.accountName}</p>
-                                    <p style={{ marginTop: '-10px' }}>{acct.accountNumber}</p>
-                                </AccountNameDiv>
-                            </FirstColumn>
-                            <FirstColumn>
-                                <div>
-                                    <p>Funds</p>
-                                    <p style={{ marginTop: '-10px' }}><BsCurrencyRupee />{acct.funds}</p>
-                                </div>
-                            </FirstColumn>
-                        </ListItem>
-                        <hr />
+                        {acct.id === props.acc[0]?.id ? '' : <>
+                            <ListItem disable={acct.id === props.acc[0]?.id} >
+                                <FirstColumn>
+                                    <div>
+                                        <ImgDiv src={acct.icon} alt='icon' />
+                                    </div>
+                                    <AccountNameDiv>
+                                        <p>{acct.accountName}</p>
+                                        <p style={{ marginTop: '-10px' }}>{acct.accountNumber}</p>
+                                    </AccountNameDiv>
+                                </FirstColumn>
+                                <FirstColumn>
+                                    <div>
+                                        <p>Funds</p>
+                                        <p style={{ marginTop: '-10px' }}><BsCurrencyRupee />{acct.funds}</p>
+                                    </div>
+                                </FirstColumn>
+
+                            </ListItem>
+                            <hr />
+                        </>}
+
+
                     </StyledLi>
 
                     )}
