@@ -11,21 +11,24 @@ export const getAccounts = async (userid) => {
     }
     return data
 }
-export const updateRows = async (userid, paymentData) => {
+export const updateFromRows = async (userid, paymentData, fromFunds) => {
     // let newFunds = paymentData.selectedFromAccount[0].funds
     const { data, error } = await supabase
         .from('Users')
-        .update({ 'funds': paymentData.selectedFromAccount[0].funds })
+        .update({ 'funds': fromFunds })
         .eq('userid', userid).eq('accountNumber', paymentData.selectedFromAccount[0].accountNumber)
         .select()
-    const { data1, error1 } = await supabase
+    return data
+}
+export const updateToRows = async (userid, paymentData, toFunds) => {
+    // let newFunds = paymentData.selectedFromAccount[0].funds
+    const { data, error } = await supabase
         .from('Users')
-        .update({ 'funds': paymentData.selectedToAccount[0].funds })
+        .update({ 'funds': toFunds })
         .eq('userid', userid).eq('accountNumber', paymentData.selectedToAccount[0].accountNumber)
         .select()
-    return data1
+    return data
 }
-
 export const getPaymnetTypes = async (userid) => {
 
     let { data, error } = await supabase

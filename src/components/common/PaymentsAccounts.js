@@ -1,5 +1,4 @@
 const PaymentsAccounts = (props) => {
-    console.log(props)
     return (
         <div>
             <ul>

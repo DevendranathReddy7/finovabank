@@ -38,7 +38,7 @@ const Accounts = () => {
                             </div>
                         </div>
 
-                        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                        <div className="arrow">
                             <AiOutlineRight />
                         </div>
 
