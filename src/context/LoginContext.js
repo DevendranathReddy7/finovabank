@@ -28,13 +28,15 @@ function AuthProvider({ children }) {
     const [loginError, setLoginError] = useState('')
     const [{ user, isAuthenticated }, dispatch] = useReducer(reducer, initialState)
     function login(email, password) {
-
-        if (FAKE_USER[0].email === email && FAKE_USER[0].password === password) {
-            dispatch({ type: 'login', payload: FAKE_USER[0] })
-            setCurrentUser(FAKE_USER[0])
-        } else {
-            setLoginError('Invalid Registration Id or Password')
-        }
+        FAKE_USER.map(user => {
+            if (user.email === email && user.password === password) {
+                dispatch({ type: 'login', payload: user })
+                setCurrentUser(user)
+                return ''
+            } else {
+                setLoginError('Invalid Registration Id or Password')
+            }
+        })
 
 
     }

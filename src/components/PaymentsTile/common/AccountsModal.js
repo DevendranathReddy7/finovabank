@@ -4,6 +4,7 @@ import { BsCurrencyRupee } from 'react-icons/bs'
 
 import { AccountNameDiv, CustomModal, FirstColumn, ImgDiv, ListItem, StyledLi } from './AccountModalStyled';
 import { usePayments } from '../../../context/paymentContext';
+import { PrimaryButton } from './PaymentScreen/StyledPaymnetInput';
 
 function AccountsModal(props) {
     const { accounts } = usePayments()
@@ -23,15 +24,15 @@ function AccountsModal(props) {
         setModalOpen(false)
         props.selectedAccount(id)
     }
-    console.log(props.acc)
     return (
         <div>
             {isModalOpen && (
                 <CustomModal>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '0px 1rem' }}>
                         <p>{props.which} (Select account)</p>
-                        <button onClick={closeModal} >X</button>
+                        <PrimaryButton cls onClick={closeModal} >X</PrimaryButton>
                     </div>
+                    <hr />
                     {accounts?.map(acct => <StyledLi key={acct.id} onClick={() => { clickHandler(acct.id) }}>
                         {acct.id === props.acc[0]?.id ? '' : <>
                             <ListItem disable={acct.id === props.acc[0]?.id} >

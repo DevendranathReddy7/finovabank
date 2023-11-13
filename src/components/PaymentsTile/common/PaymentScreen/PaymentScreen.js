@@ -90,7 +90,7 @@ const PaymentScreen = (props) => {
                 <form onSubmit={submitHandler}>
                     <div>
                         <Label>From</Label>
-                        <StyledPaymentLi aria-label="select from account" onClick={() => toggleContainer('from')} >{
+                        <StyledPaymentLi sty={fromAccCheck.toString()} onClick={() => toggleContainer('from')} >{
                             (selectedFromAccount !== '' && Object.keys(selectedFromAccount[0]).length > 0) ?
                                 <StyledSelectedAccountDiv>
                                     <StyledAccount1stColumn>
@@ -114,7 +114,7 @@ const PaymentScreen = (props) => {
                     </div>
                     <div>
                         <Label>To</Label>
-                        <StyledPaymentLi aria-label="select to account" onClick={() => toggleContainer('to')} >{
+                        <StyledPaymentLi sty={toAccCheck.toString()} onClick={() => toggleContainer('to')} >{
                             (selectedToAccount !== '' && Object.keys(selectedToAccount[0]).length > 0) ?
                                 <StyledSelectedAccountDiv>
                                     <StyledAccount1stColumn>
@@ -138,7 +138,7 @@ const PaymentScreen = (props) => {
                     </div>
                     <div>
                         <Label>Amount</Label>
-                        <StyledPaymentInput type="text" placeholder="Enter Account" sty={amountCheck.toString()} onChange={(e) => amountHandler(e)} required='required' />
+                        <StyledPaymentInput type="text" placeholder="Enter Amount" sty={amountCheck.toString()} onChange={(e) => amountHandler(e)} required='required' />
                         {amountCheck && <ValidationError msg='Please enter a valid amount'></ValidationError>}
                     </div>
                     <div style={{ display: "flex", justifyContent: "flex-end", padding: '3px', marginRight: '4rem' }}>

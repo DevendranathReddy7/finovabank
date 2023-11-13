@@ -88,6 +88,7 @@ export const Footer = styled.footer`
 export const PrimaryButton = styled.button`
 background-color:rgb(0,125,186);
 padding:10px 15px;
+padding: ${(props) => props.cls ? '6px 10px' : '10px 15px'};
 border:none;
 border-radius:3px;
 color: white;
