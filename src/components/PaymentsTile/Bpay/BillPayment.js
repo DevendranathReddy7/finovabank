@@ -1,5 +1,5 @@
-import NavTileBarLayout from "../AppLayout/NavTileBarLayout"
-import PaymentScreen from "./common/PaymentScreen/PaymentScreen"
+import NavTileBarLayout from "../../AppLayout/NavTileBarLayout"
+import PaymentScreen from "../common/PaymentScreen/PaymentScreen"
 
 
 const BillPayment = () => {

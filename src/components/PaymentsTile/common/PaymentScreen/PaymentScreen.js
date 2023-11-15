@@ -5,6 +5,7 @@ import LinkButton from "../../../common/LinkButton"
 import { usePayments } from "../../../../context/paymentContext"
 import { ValidationError } from "../../../common/Error"
 import { useNavigate } from "react-router-dom"
+import BpayPamentScreen from "../../Bpay/BpayPamentScreen"
 
 
 
@@ -113,27 +114,30 @@ const PaymentScreen = (props) => {
 
                     </div>
                     <div>
-                        <Label>To</Label>
-                        <StyledPaymentLi sty={toAccCheck.toString()} onClick={() => toggleContainer('to')} >{
-                            (selectedToAccount !== '' && Object.keys(selectedToAccount[0]).length > 0) ?
-                                <StyledSelectedAccountDiv>
-                                    <StyledAccount1stColumn>
-                                        <ImgDiv src={selectedToAccount[0].icon} />
-                                        <div>
-                                            <p>{selectedToAccount[0].accountName}</p>
-                                            <p style={{ marginTop: '-12px' }}>{selectedToAccount[0].accountNumber}</p>
-                                        </div>
-                                    </StyledAccount1stColumn>
-                                    <StyledAccount1stColumn>
-                                        <div>
-                                            <p>Funds</p>
-                                            <p style={{ marginTop: '-12px' }}>{selectedToAccount[0].funds}</p>
-                                        </div>
-                                    </StyledAccount1stColumn>
-                                </StyledSelectedAccountDiv> : <p style={{ margin: '20px 10px' }}>Select to account</p>
-                        }</StyledPaymentLi>
-                        {isToAccountClicked && <AccountsModal which='To' accounts={accounts} selectedAccount={toAccountHandler} acc={selectedFromAccount} />}
-                        {toAccCheck && <ValidationError msg='Please select a To account'></ValidationError>}
+                        <Label>{props.title === 'Funds Transfer' ? 'To' : "Biller"}</Label>
+
+                        {props.title === 'Funds Transfer' ? <>
+                            <StyledPaymentLi sty={toAccCheck.toString()} onClick={() => toggleContainer('to')} >{
+                                (selectedToAccount !== '' && Object.keys(selectedToAccount[0]).length > 0) ?
+                                    <StyledSelectedAccountDiv>
+                                        <StyledAccount1stColumn>
+                                            <ImgDiv src={selectedToAccount[0].icon} />
+                                            <div>
+                                                <p>{selectedToAccount[0].accountName}</p>
+                                                <p style={{ marginTop: '-12px' }}>{selectedToAccount[0].accountNumber}</p>
+                                            </div>
+                                        </StyledAccount1stColumn>
+                                        <StyledAccount1stColumn>
+                                            <div>
+                                                <p>Funds</p>
+                                                <p style={{ marginTop: '-12px' }}>{selectedToAccount[0].funds}</p>
+                                            </div>
+                                        </StyledAccount1stColumn>
+                                    </StyledSelectedAccountDiv> : <p style={{ margin: '20px 10px' }}>Select to account</p>
+                            }</StyledPaymentLi>
+                            {isToAccountClicked && <AccountsModal which='To' accounts={accounts} selectedAccount={toAccountHandler} acc={selectedFromAccount} />}
+                            {toAccCheck && <ValidationError msg='Please select a To account'></ValidationError>}</> : <BpayPamentScreen />}
+
 
                     </div>
                     <div>
