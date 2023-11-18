@@ -42,3 +42,15 @@ export const getPaymnetTypes = async (userid) => {
     return data
 }
 
+export const getBiller = async () => {
+
+    let { data, error } = await supabase
+        .from('Billers')
+        .select('*')
+
+    if (error) {
+        <Error err={error}></Error>
+        throw new Error('No Billers Found')
+    }
+    return data
+}
