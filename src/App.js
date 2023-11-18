@@ -9,6 +9,7 @@ import BillPayment from "./components/PaymentsTile/Bpay/BillPayment"
 import ReviewConfirm from "./components/PaymentsTile/common/ReviewConfirm"
 import { PaymentProvider } from "./context/paymentContext"
 import Submit from "./components/PaymentsTile/common/Submit"
+import AddBiller from "./components/PaymentsTile/Bpay/AddBiller"
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
             <Route path="/bill-payment" element={<BillPayment />}></Route>
             <Route path="/review-confirm" element={<ReviewConfirm />}></Route>
             <Route path="/submit" element={<Submit />}></Route>
+            <Route path="/add-biller" element={<AddBiller />} />
             <Route path="/settings" element={<Settings />}>
               <Route path="add-biller" element={<p>paymnet</p>}></Route>
               <Route path="add-imt" element={<p>paymnet</p>}></Route>

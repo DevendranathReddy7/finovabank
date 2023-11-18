@@ -91,6 +91,7 @@ padding:10px 15px;
 padding: ${(props) => props.cls ? '6px 10px' : '10px 15px'};
 border:none;
 border-radius:3px;
+margin-right:20px;
 color: white;
 `
 export const SecondaryButton = styled.button`

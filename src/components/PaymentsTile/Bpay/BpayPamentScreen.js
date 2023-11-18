@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { ImgDiv, StyledAccount1stColumn, StyledPaymentLi, StyledSelectedAccountDiv } from "../common/PaymentScreen/StyledPaymnetInput"
+import { StyledAccount1stColumn, StyledPaymentLi, StyledSelectedAccountDiv } from "../common/PaymentScreen/StyledPaymnetInput"
 import { getBiller } from "../../../supabase/apiAccounts"
 import BillerModal from "./BillerModal"
 
@@ -16,10 +16,11 @@ const BpayPamentScreen = () => {
     }, [])
 
     const toggleContainer = () => {
-        setToClicked(prev => !prev)
+        setToClicked(true)
 
     }
     const selectedBiller = (id) => {
+        setToClicked(false)
         setBillers('')
         const biller = billers.filter(bill => bill.id === id)
         setNewSelectedBiller(biller)
@@ -28,7 +29,7 @@ const BpayPamentScreen = () => {
     return (
         <div>
             <StyledPaymentLi onClick={() => toggleContainer('to')} >{
-                (newSelectedBiller[0].id !== '') ?
+                (newSelectedBiller[0] !== undefined) ?
                     <StyledSelectedAccountDiv>
                         <StyledAccount1stColumn>
                             <div>
@@ -40,7 +41,7 @@ const BpayPamentScreen = () => {
                         </StyledAccount1stColumn>
                     </StyledSelectedAccountDiv> : <p style={{ margin: '20px 10px' }}>Select a Biller</p>
             }</StyledPaymentLi>
-            {toClicked && <BillerModal billers={billers} clickedBiller={selectedBiller} />}
+            {toClicked && <BillerModal billers={billers} clickedBiller={selectedBiller} sBiller={newSelectedBiller} />}
         </div>
     )
 }
