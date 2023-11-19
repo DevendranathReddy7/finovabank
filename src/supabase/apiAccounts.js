@@ -54,3 +54,14 @@ export const getBiller = async () => {
     }
     return data
 }
+
+export const updateBillers = async (details) => {
+
+    const { data, error } = await supabase
+        .from('Billers')
+        .insert([
+            { billerName: details.billerName, billerCode: details.billerCode, referenceNo: details.ref },
+        ])
+        .select()
+    return data
+}

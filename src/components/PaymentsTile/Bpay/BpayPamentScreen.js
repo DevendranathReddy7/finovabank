@@ -25,7 +25,6 @@ const BpayPamentScreen = () => {
         const biller = billers.filter(bill => bill.id === id)
         setNewSelectedBiller(biller)
     }
-    console.log(newSelectedBiller[0])
     return (
         <div>
             <StyledPaymentLi onClick={() => toggleContainer('to')} >{
@@ -41,7 +40,7 @@ const BpayPamentScreen = () => {
                         </StyledAccount1stColumn>
                     </StyledSelectedAccountDiv> : <p style={{ margin: '20px 10px' }}>Select a Biller</p>
             }</StyledPaymentLi>
-            {toClicked && <BillerModal billers={billers} clickedBiller={selectedBiller} sBiller={newSelectedBiller} />}
+            {toClicked && <BillerModal billers={billers} clickedBiller={selectedBiller} />}
         </div>
     )
 }
