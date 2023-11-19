@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 function BillerModal(props) {
     const [isModalOpen, setModalOpen] = useState(true);
+    const [billers, setBillers] = useState(props.billers)
     const navigate = useNavigate()
     // const openModal = () => {
     //     setModalOpen(true);
@@ -22,6 +23,10 @@ function BillerModal(props) {
         setModalOpen(false)
         props.clickedBiller(id)
     }
+    const addHandler = () => {
+        navigate('/add-biller')
+    }
+    console.log(props.billers)
     return (
         <div>
             {isModalOpen && (
@@ -30,14 +35,14 @@ function BillerModal(props) {
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '0px 1rem' }}>
                             <p>Select a Biller</p>
                             <div>
-                                <PrimaryButton onClick={navigate('/add-biller')}>Add a Biller</PrimaryButton>
+                                <PrimaryButton onClick={addHandler}>Add a Biller</PrimaryButton>
                                 <PrimaryButton cls onClick={closeModal} >X</PrimaryButton>
                             </div>
 
                         </div>
 
                         <hr />
-                        {props.billers?.map(biller =>
+                        {billers?.map(biller =>
                             <StyledLi key={biller.id} onClick={() => { clickHandler(biller.id) }}>
                                 <FirstColumn>
                                     <AccountNameDiv>

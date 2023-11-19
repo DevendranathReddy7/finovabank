@@ -1,78 +1,55 @@
+import { useState } from "react"
 import NavTileBarLayout from "../../AppLayout/NavTileBarLayout"
-import { Label, PaymentWrapper, PrimaryButton, StyledAccount1stColumn, StyledPaymentLi, StyledSelectedAccountDiv } from "../common/PaymentScreen/StyledPaymnetInput"
+import { StyledLi } from "../common/AccountModalStyled"
+import { Label, PaymentWrapper, PrimaryButton } from "../common/PaymentScreen/StyledPaymnetInput"
+import { StyledAdBillerInput } from "./StyledAddBiller"
+import { updateBillers } from "../../../supabase/apiAccounts"
+import { useNavigate } from "react-router-dom"
 
 const AddBiller = () => {
-    const toggleContainer = () => {
-
-    }
+    const navigate = useNavigate()
+    const [newBiller, setNewBiller] = useState({ billerName: '', billerCode: '', ref: '' })
     const submitHandler = (e) => {
         e.preventDefault()
+        updateBillers(newBiller)
+        navigate('/bill-payment')
+    }
+
+    const inputHandle = (field, value) => {
+        switch (field) {
+            case 'name':
+                setNewBiller(prev => ({ ...prev, billerName: value }))
+                break;
+            case 'code':
+                setNewBiller(prev => ({ ...prev, billerCode: value }))
+                break;
+            case 'ref':
+                setNewBiller(prev => ({ ...prev, ref: value }))
+                break;
+            default:
+                break
+        }
     }
     return (
         <div>
             <NavTileBarLayout />
             <PaymentWrapper>
                 <form onSubmit={submitHandler}>
-                    <div>
+                    <StyledLi>
                         <Label>Biller Name</Label>
-                        <StyledPaymentLi onClick={() => toggleContainer('from')} >{
-                            <StyledSelectedAccountDiv>
-                                <StyledAccount1stColumn>
-                                    <div>
-                                        <p >{ }</p>
-                                        <p style={{ marginTop: '-12px' }}>{ }</p>
-                                    </div>
-                                </StyledAccount1stColumn>
-                                <StyledAccount1stColumn>
-                                    <div>
-                                        <p></p>
-                                        <p style={{ marginTop: '-12px' }}>{ }</p>
-                                    </div>
-                                </StyledAccount1stColumn>
-                            </StyledSelectedAccountDiv>
-                        }</StyledPaymentLi>
+                        <StyledAdBillerInput onChange={(e) => inputHandle('name', e.target.value)} />
+                    </StyledLi>
 
-                    </div>
-                    <div>
+                    <StyledLi>
                         <Label>Biller Code</Label>
-                        <StyledPaymentLi onClick={() => toggleContainer('to')} >{
-                            <StyledSelectedAccountDiv>
-                                <StyledAccount1stColumn>
+                        <StyledAdBillerInput onChange={(e) => inputHandle('code', e.target.value)} />
 
-                                    <div>
-                                        <p>{ }</p>
-                                        <p style={{ marginTop: '-12px' }}>{ }</p>
-                                    </div>
-                                </StyledAccount1stColumn>
-                                <StyledAccount1stColumn>
-                                    <div>
-                                        <p></p>
-                                        <p style={{ marginTop: '-12px' }}>{ }</p>
-                                    </div>
-                                </StyledAccount1stColumn>
-                            </StyledSelectedAccountDiv>
-                        }</StyledPaymentLi>
-                    </div>
-                    <div>
+                    </StyledLi>
+                    <StyledLi>
                         <Label>Biller Reference</Label>
-                        <StyledPaymentLi onClick={() => toggleContainer('to')} >{
-                            <StyledSelectedAccountDiv>
-                                <StyledAccount1stColumn>
+                        <StyledAdBillerInput onChange={(e) => inputHandle('ref', e.target.value)} />
 
-                                    <div>
-                                        <p>{ }</p>
-                                        <p style={{ marginTop: '-12px' }}>{ }</p>
-                                    </div>
-                                </StyledAccount1stColumn>
-                                <StyledAccount1stColumn>
-                                    <div>
-                                        <p></p>
-                                        <p style={{ marginTop: '-12px' }}>{ }</p>
-                                    </div>
-                                </StyledAccount1stColumn>
-                            </StyledSelectedAccountDiv>
-                        }</StyledPaymentLi>
-                    </div>
+                    </StyledLi>
                     <div style={{ display: "flex", justifyContent: "flex-end", padding: '3px', marginRight: '4rem' }}>
                         <PrimaryButton>Save</PrimaryButton>
                     </div>

@@ -25,11 +25,9 @@ const App = () => {
             <Route path="/review-confirm" element={<ReviewConfirm />}></Route>
             <Route path="/submit" element={<Submit />}></Route>
             <Route path="/add-biller" element={<AddBiller />} />
-            <Route path="/settings" element={<Settings />}>
-              <Route path="add-biller" element={<p>paymnet</p>}></Route>
-              <Route path="add-imt" element={<p>paymnet</p>}></Route>
-              <Route path="add-paye" element={<p>paymnet</p>}></Route>
-            </Route>
+            <Route path="/settings" element={<Settings />} />
+            <Route path="add-imt" element={<p>paymnet</p>}></Route>
+            <Route path="add-paye" element={<p>paymnet</p>}></Route>
           </Routes>
         </BrowserRouter>
       </PaymentProvider>
