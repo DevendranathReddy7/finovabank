@@ -1,12 +1,12 @@
 import NavTileBarLayout from "../../AppLayout/NavTileBarLayout"
-import PaymentScreen from "../common/PaymentScreen/PaymentScreen"
+import BpayPamentScreen from "./BpayPamentScreen"
 
 
 const BillPayment = () => {
     return (
         <div>
             <NavTileBarLayout />
-            <PaymentScreen title='Bill Payment' />
+            <BpayPamentScreen />
         </div>
     )
 }
