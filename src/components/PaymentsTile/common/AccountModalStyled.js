@@ -14,6 +14,9 @@ padding: 13px 3px 3px 5px;
 border-radius: 5px;
 display:block;
 min-width:300px;
+&::-webkit-scrollbar {
+  display: none;
+}
 `
 
 export const StyledLi = styled.li`
@@ -29,8 +32,8 @@ justify-content: space-between;
 width: 100%;
 
 ${(props) =>
-        props.disable &&
-        `
+    props.disable &&
+    `
     cursor: not-allowed;
     background-color: #eee; 
   `};

@@ -21,7 +21,6 @@ const BpayPamentScreen = () => {
     }
     const selectedBiller = (id) => {
         setToClicked(false)
-        setBillers('')
         const biller = billers.filter(bill => bill.id === id)
         setNewSelectedBiller(biller)
     }
@@ -30,14 +29,14 @@ const BpayPamentScreen = () => {
             <StyledPaymentLi onClick={() => toggleContainer('to')} >{
                 (newSelectedBiller[0] !== undefined) ?
                     <StyledSelectedAccountDiv>
-                        <StyledAccount1stColumn>
-                            <div>
-                                <p style={{ marginLeft: '20px' }}><strong>{newSelectedBiller[0].billerName}</strong></p>
-                                <p style={{ marginTop: '-12px', marginLeft: '20px' }}>Code: {newSelectedBiller[0].billerCode}; <span>ref: {newSelectedBiller[0].referenceNo}</span></p>
-                            </div>
-                        </StyledAccount1stColumn>
-                        <StyledAccount1stColumn>
-                        </StyledAccount1stColumn>
+                        {/* <StyledAccount1stColumn> */}
+                        <div>
+                            <p style={{ marginLeft: '20px' }}><strong>{newSelectedBiller[0].billerName}</strong></p>
+                            <p style={{ marginTop: '-12px', marginLeft: '20px' }}>Code: {newSelectedBiller[0].billerCode}; <span>ref: {newSelectedBiller[0].referenceNo}</span></p>
+                        </div>
+                        {/* </StyledAccount1stColumn> */}
+                        {/* <StyledAccount1stColumn>
+                        </StyledAccount1stColumn> */}
                     </StyledSelectedAccountDiv> : <p style={{ margin: '20px 10px' }}>Select a Biller</p>
             }</StyledPaymentLi>
             {toClicked && <BillerModal billers={billers} clickedBiller={selectedBiller} />}

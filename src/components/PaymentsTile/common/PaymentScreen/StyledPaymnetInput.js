@@ -93,6 +93,8 @@ border:none;
 border-radius:3px;
 margin-right:20px;
 color: white;
+height: ${(props) => props.btn ? '2.5rem' : ''};
+margin-left: ${(props) => props.btn ? '0.8rem' : ''};
 `
 export const SecondaryButton = styled.button`
 background-color:transparent;
