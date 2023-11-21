@@ -17,7 +17,7 @@ const BpayPamentScreen = () => {
     const [enteredAmount, setEnteredAmount] = useState('')
     const [amountCheck, setAmountCheck] = useState(false)
     const [fromAccCheck, setFromAccCheck] = useState(false)
-    const [toAccCheck, setToAccCheck] = useState(false)
+    const [toBillerCheck, setToBillerCheck] = useState(false)
     const { accounts, setPaymentData } = usePayments()
     const navigate = useNavigate()
     const toggleContainer = (id) => {
@@ -57,22 +57,22 @@ const BpayPamentScreen = () => {
         }
         else if (!newSelectedBiller) {
             setFromAccCheck(false)
-            setToAccCheck(true)
+            setToBillerCheck(true)
         }
         else if (!enteredAmount) {
             setFromAccCheck(false)
-            //setToAccCheck(false)
+            setToBillerCheck(false)
             setAmountCheck(true)
         } else {
             setAmountCheck(false)
             setFromAccCheck(false)
-            //setToAccCheck(false)
+            setToBillerCheck(false)
             if (enteredAmount > selectedFromAccount[0].funds) {
                 setAmountCheck(true)
             } else {
                 setAmountCheck(false)
                 setPaymentData({ selectedFromAccount, newSelectedBiller, enteredAmount })
-                navigate('/review-confirm')
+                navigate('/bpay-review-confirm')
             }
 
         }
@@ -136,6 +136,8 @@ const BpayPamentScreen = () => {
                             </StyledSelectedAccountDiv> : <p style={{ margin: '20px 10px' }}>Select a Biller</p>
                     }</StyledPaymentLi>
                     {toClicked && <BillerModal billers={billers} clickedBiller={selectedBiller} />}
+                    {toBillerCheck && <ValidationError msg='Please select a Biller'></ValidationError>}
+
 
                     <div>
                         <Label>Amount</Label>
