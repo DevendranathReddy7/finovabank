@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom"
 
 
 
-const PaymentScreen = (props) => {
+const PaymentScreen = () => {
     const [isFromAccountClicked, setIsFromAccountClicked] = useState(false);
     const [isToAccountClicked, setIsToAccountClicked] = useState(false);
     const [selectedFromAccount, setSelectedFromAccount] = useState('')

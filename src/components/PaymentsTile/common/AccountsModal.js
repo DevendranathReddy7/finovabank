@@ -24,6 +24,7 @@ function AccountsModal(props) {
         setModalOpen(false)
         props.selectedAccount(id)
     }
+    console.log(accounts)
     return (
         <div>
             {isModalOpen && (
