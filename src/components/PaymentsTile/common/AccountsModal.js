@@ -4,7 +4,7 @@ import { BsCurrencyRupee } from 'react-icons/bs'
 
 import { AccountNameDiv, CustomModal, FirstColumn, ImgDiv, ListItem, StyledLi } from './AccountModalStyled';
 import { usePayments } from '../../../context/paymentContext';
-import { PrimaryButton } from './PaymentScreen/StyledPaymnetInput';
+import { PrimaryButton } from './StyledPaymnetInput';
 
 function AccountsModal(props) {
     const { accounts } = usePayments()

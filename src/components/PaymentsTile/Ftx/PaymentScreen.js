@@ -1,8 +1,8 @@
 import { useState } from "react"
-import { H3, ImgDiv, Label, PaymentWrapper, PrimaryButton, StyledAccount1stColumn, StyledPaymentInput, StyledPaymentLi, StyledSelectedAccountDiv } from "./StyledPaymnetInput"
-import AccountsModal from "../AccountsModal"
-import { usePayments } from "../../../../context/paymentContext"
-import { ValidationError } from "../../../common/Error"
+import { H3, ImgDiv, Label, PaymentWrapper, PrimaryButton, StyledAccount1stColumn, StyledPaymentInput, StyledPaymentLi, StyledSelectedAccountDiv } from "../common/StyledPaymnetInput"
+import AccountsModal from "../common/AccountsModal"
+import { usePayments } from "../../../context/paymentContext"
+import { ValidationError } from "../../common/Error"
 import { useNavigate } from "react-router-dom"
 
 
