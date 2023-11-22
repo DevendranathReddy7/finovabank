@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { AccountNameDiv, CustomModal, FirstColumn, StyledLi } from '../common/AccountModalStyled';
-import { PrimaryButton } from '../common/PaymentScreen/StyledPaymnetInput';
+import { PrimaryButton } from '../common/StyledPaymnetInput';
 import Loader from '../../common/Loader';
 import { useNavigate } from 'react-router-dom';
 import { StyledFilter } from './StyledAddBiller';

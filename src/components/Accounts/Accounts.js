@@ -3,7 +3,7 @@ import { AiOutlineRight } from 'react-icons/ai'
 import { BsCurrencyRupee } from 'react-icons/bs'
 import './Account.css'
 import Loader from "../common/Loader";
-import { H3 } from "../PaymentsTile/common/PaymentScreen/StyledPaymnetInput";
+import { H3 } from "../PaymentsTile/common/StyledPaymnetInput";
 import { usePayments } from "../../context/paymentContext";
 
 const Accounts = () => {

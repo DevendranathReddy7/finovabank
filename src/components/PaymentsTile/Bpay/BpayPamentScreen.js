@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { H3, ImgDiv, Label, PaymentWrapper, PrimaryButton, StyledAccount1stColumn, StyledPaymentInput, StyledPaymentLi, StyledSelectedAccountDiv } from "../common/PaymentScreen/StyledPaymnetInput"
+import { H3, ImgDiv, Label, PaymentWrapper, PrimaryButton, StyledAccount1stColumn, StyledPaymentInput, StyledPaymentLi, StyledSelectedAccountDiv } from "../common/StyledPaymnetInput"
 import { getBiller } from "../../../supabase/apiAccounts"
 import BillerModal from "./BillerModal"
 import AccountsModal from "../common/AccountsModal"

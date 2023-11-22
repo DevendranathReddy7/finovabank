@@ -1,6 +1,6 @@
 import { BsCurrencyRupee } from "react-icons/bs"
 import NavTileBarLayout from "../../AppLayout/NavTileBarLayout"
-import { H3, SecondaryButton } from "../common/PaymentScreen/StyledPaymnetInput"
+import { H3, SecondaryButton } from "../common/StyledPaymnetInput"
 import PaymentStatus from "../common/PaymentStatus"
 import LinkButton from "../../common/LinkButton"
 import { usePayments } from "../../../context/paymentContext"

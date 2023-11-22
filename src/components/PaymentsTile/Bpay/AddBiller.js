@@ -1,7 +1,7 @@
 import { useState } from "react"
 import NavTileBarLayout from "../../AppLayout/NavTileBarLayout"
 import { StyledLi } from "../common/AccountModalStyled"
-import { Label, PaymentWrapper, PrimaryButton } from "../common/PaymentScreen/StyledPaymnetInput"
+import { Label, PaymentWrapper, PrimaryButton } from "../common/StyledPaymnetInput"
 import { StyledAdBillerInput } from "./StyledAddBiller"
 import { updateBillers } from "../../../supabase/apiAccounts"
 import { useNavigate } from "react-router-dom"
