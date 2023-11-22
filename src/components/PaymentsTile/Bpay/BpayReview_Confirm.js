@@ -24,9 +24,10 @@ const BpayReview_Confirm = () => {
                         <tr>Account Number: &nbsp; {paymentData.selectedFromAccount[0].accountNumber}</tr>
                     </div>
                     <div>
-                        <tr><b>To</b> &nbsp; {paymentData.selectedToAccount[0].name}</tr>
-                        <tr>Account: &nbsp; {paymentData.selectedToAccount[0].accountName}</tr>
-                        <tr>Account Number: &nbsp; {paymentData.selectedToAccount[0].accountNumber}</tr>
+                        <tr><b>To</b></tr>
+                        <tr>Biller Name: &nbsp;{paymentData.newSelectedBiller[0].billerName}</tr>
+                        <tr>Biller Code: &nbsp; {paymentData.newSelectedBiller[0].billerCode}</tr>
+                        <tr>Reference Number: &nbsp; {paymentData.newSelectedBiller[0].referenceNo}</tr>
                     </div>
                 </table>
                 <table style={{ display: "flex", margin: '4rem' }}>
