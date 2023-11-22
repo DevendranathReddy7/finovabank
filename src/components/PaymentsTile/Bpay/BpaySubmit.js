@@ -1,27 +1,40 @@
 import { BsCurrencyRupee } from "react-icons/bs"
-import { usePayments } from "../../../context/paymentContext"
 import NavTileBarLayout from "../../AppLayout/NavTileBarLayout"
-import { H3, PrimaryButton } from "../common/PaymentScreen/StyledPaymnetInput"
+import { H3, SecondaryButton } from "../common/PaymentScreen/StyledPaymnetInput"
+import PaymentStatus from "../common/PaymentStatus"
 import LinkButton from "../../common/LinkButton"
+import { usePayments } from "../../../context/paymentContext"
+import { useAuth } from "../../../context/LoginContext"
+import { useEffect } from "react"
+import { updateFromRows } from "../../../supabase/apiAccounts"
 
+const BpaySubmit = () => {
+    const { paymentData } = usePayments()
+    const { currentUser } = useAuth()
+    useEffect(() => {
 
+        const updateRow = async () => {
+            const fromAccountFunds = await paymentData.selectedFromAccount[0].funds
+            const enteredAmount = await paymentData.enteredAmount
+            const newFromFunds = Number(fromAccountFunds) - Number(enteredAmount)
+            const data = await updateFromRows(currentUser.userId, paymentData, newFromFunds)
 
-const BpayReview_Confirm = () => {
-    const { paymentData, setPaymentData } = usePayments()
+        }
+        updateRow()
+    }, [])
 
-    const continueHandler = () => {
-        setPaymentData({ ...paymentData, selectedFromAccount: [{ ...paymentData.selectedFromAccount[0], funds: paymentData.selectedFromAccount[0].funds - Number(paymentData.enteredAmount) }, ...paymentData.selectedFromAccount.slice(1)] })
-    }
     return (
         <div>
             <NavTileBarLayout />
+            <H3>Confirmation</H3>
+            <PaymentStatus />
             <div>
-                <H3>Review And Confirm</H3>
                 <table style={{ display: "flex", margin: '4rem' }}>
                     <div style={{ marginRight: '4rem' }}>
                         <tr><b>From </b></tr>
                         <tr>Account: &nbsp; {paymentData.selectedFromAccount[0].accountName}</tr>
                         <tr>Account Number: &nbsp; {paymentData.selectedFromAccount[0].accountNumber}</tr>
+                        <tr>Available Funds: &nbsp; {paymentData.selectedFromAccount[0].funds}</tr>
                     </div>
                     <div>
                         <tr><b>To</b></tr>
@@ -38,8 +51,7 @@ const BpayReview_Confirm = () => {
                     </div>
                 </table>
                 <table style={{ display: "flex", margin: '4rem' }}>
-                    <LinkButton to='-1'>Back</LinkButton>
-                    <LinkButton to='/bpay-submit'><PrimaryButton onClick={continueHandler}>Submit</PrimaryButton></LinkButton>
+                    <LinkButton to='/home'><SecondaryButton>Back</SecondaryButton></LinkButton>
                 </table>
 
 
@@ -47,4 +59,4 @@ const BpayReview_Confirm = () => {
         </div>
     )
 }
-export default BpayReview_Confirm
+export default BpaySubmit
