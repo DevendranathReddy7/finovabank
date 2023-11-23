@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom"
 import { usePayments } from "../../../context/paymentContext"
 
 const BpayPamentScreen = () => {
-    const [billers, setBillers] = useState({})
+    //const [billers, setBillers] = useState({})
     const [newSelectedBiller, setNewSelectedBiller] = useState('')
     const [toClicked, setToClicked] = useState(false)
     const [isFromAccountClicked, setIsFromAccountClicked] = useState(false);
@@ -18,7 +18,7 @@ const BpayPamentScreen = () => {
     const [amountCheck, setAmountCheck] = useState(false)
     const [fromAccCheck, setFromAccCheck] = useState(false)
     const [toBillerCheck, setToBillerCheck] = useState(false)
-    const { accounts, setPaymentData } = usePayments()
+    const { accounts, setPaymentData, billers } = usePayments()
     const navigate = useNavigate()
     const toggleContainer = (id) => {
         if (id === 'from') {
@@ -81,13 +81,13 @@ const BpayPamentScreen = () => {
     const submitHandler = (e) => {
         e.preventDefault();
     }
-    useEffect(() => {
-        const getBillers = async () => {
-            const data = await getBiller()
-            setBillers(data)
-        }
-        getBillers()
-    }, [])
+    // useEffect(() => {
+    //     const getBillers = async () => {
+    //         const data = await getBiller()
+    //         setBillers(data)
+    //     }
+    //     getBillers()
+    // }, [])
 
 
     const selectedBiller = (id) => {

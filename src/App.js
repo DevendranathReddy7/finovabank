@@ -12,6 +12,7 @@ import Submit from "./components/PaymentsTile/Ftx/Submit"
 import AddBiller from "./components/PaymentsTile/Bpay/AddBiller"
 import BpayReview_Confirm from "./components/PaymentsTile/Bpay/BpayReview_Confirm"
 import BpaySubmit from "./components/PaymentsTile/Bpay/BpaySubmit"
+import ManageBiller from "./components/SettingsTile/BpaySettings/ManageBiller"
 
 const App = () => {
   return (
@@ -29,8 +30,8 @@ const App = () => {
             <Route path="/submit" element={<Submit />}></Route>
             <Route path="/add-biller" element={<AddBiller />} />
             <Route path="/bpay-submit" element={<BpaySubmit />}></Route>
+            <Route path="/manage-billers" element={<ManageBiller />}></Route>
             <Route path="/settings" element={<Settings />} />
-            <Route path="add-imt" element={<p>paymnet</p>}></Route>
             <Route path="add-paye" element={<p>paymnet</p>}></Route>
           </Routes>
         </BrowserRouter>

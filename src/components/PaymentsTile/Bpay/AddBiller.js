@@ -12,7 +12,7 @@ const AddBiller = () => {
     const submitHandler = (e) => {
         e.preventDefault()
         updateBillers(newBiller)
-        navigate('/bill-payment')
+        navigate(-1)
     }
 
     const inputHandle = (field, value) => {
