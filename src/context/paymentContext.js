@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { createContext } from "react";
-import { getAccounts } from "../supabase/apiAccounts";
+import { getAccounts, getBiller } from "../supabase/apiAccounts";
 import { useContext } from "react";
 import { useAuth } from "./LoginContext";
 
@@ -9,6 +9,7 @@ const PaymentContext = createContext()
 
 const PaymentProvider = ({ children }) => {
     const [accounts, setAccounts] = useState([])
+    const [billers, setBillers] = useState({})
     const [paymentData, setPaymentData] = useState({})
     const { currentUser } = useAuth()
     useEffect(() => {
@@ -18,7 +19,15 @@ const PaymentProvider = ({ children }) => {
         }
         getAcct()
     }, [currentUser.userId])
-    return <PaymentContext.Provider value={{ accounts, paymentData, setPaymentData }}>{children}</PaymentContext.Provider>
+    useEffect(() => {
+        const getBillers = async () => {
+            const data = await getBiller()
+            setBillers(data)
+        }
+        getBillers()
+    }, [Object.values(billers).length])
+
+    return <PaymentContext.Provider value={{ accounts, paymentData, setPaymentData, billers }}>{children}</PaymentContext.Provider>
 
 }
 

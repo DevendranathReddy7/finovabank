@@ -7,16 +7,16 @@ import Loader from "../../../common/Loader"
 
 const SettingsTiles = () => {
     const { currentUser } = useAuth()
-    const [seetingsTiles, setSettingsTiles] = useState([])
+    const [settingsTiles, setSettingsTiles] = useState([])
 
     useEffect(() => {
         getSettingsTiles(currentUser.userId).then((data) => setSettingsTiles(data))
     }, [currentUser.userId])
     return (
         <div>
-            {seetingsTiles.length === 0 && <Loader />}
+            {settingsTiles.length === 0 && <Loader />}
             <div>
-                {seetingsTiles[0]?.settingTypes.map(setting => <StyledLi key={setting.id}>
+                {settingsTiles[0]?.settingsTypes.map(setting => <StyledLi key={setting.id}>
                     <StyledDiv>
                         <img src={setting.icon} style={{ height: '50px' }} alt="icon" />
                         <Hr />

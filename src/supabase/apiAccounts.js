@@ -45,12 +45,12 @@ export const getPaymnetTypes = async (userid) => {
 export const getSettingsTiles = async (userid) => {
 
     let { data, error } = await supabase
-        .from('PaymnetCapabailites')
+        .from('SettingTiles')
         .select('*').eq('userId', userid)
 
     if (error) {
         <Error err={error}></Error>
-        throw new Error('No Paymnets Found')
+        throw new Error('No Settings Found')
     }
     return data
 }
