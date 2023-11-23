@@ -42,6 +42,19 @@ export const getPaymnetTypes = async (userid) => {
     return data
 }
 
+export const getSettingsTiles = async (userid) => {
+
+    let { data, error } = await supabase
+        .from('PaymnetCapabailites')
+        .select('*').eq('userId', userid)
+
+    if (error) {
+        <Error err={error}></Error>
+        throw new Error('No Paymnets Found')
+    }
+    return data
+}
+
 export const getBiller = async () => {
 
     let { data, error } = await supabase

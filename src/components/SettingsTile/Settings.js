@@ -1,11 +1,11 @@
-import Navbar from "../Navbar/Navbar"
-import TilesBar from "../Navbar/TilesBar"
+import NavTileBarLayout from "../AppLayout/NavTileBarLayout"
+import SettingsTiles from "./BpaySettings/Common/SettingsTiles"
 
 const Settings = () => {
     return (
         <div>
-            <Navbar />
-            <TilesBar />
+            <NavTileBarLayout />
+            <SettingsTiles />
         </div>
     )
 }
