@@ -68,8 +68,7 @@ export const getBiller = async () => {
     return data
 }
 
-export const updateBillers = async (details) => {
-
+export const addBillers = async (details) => {
     const { data, error } = await supabase
         .from('Billers')
         .insert([
@@ -77,4 +76,11 @@ export const updateBillers = async (details) => {
         ])
         .select()
     return data
+}
+
+export const deleteBiller = async (id) => {
+    const { error } = await supabase
+        .from('Billers')
+        .delete()
+        .eq('id', id)
 }

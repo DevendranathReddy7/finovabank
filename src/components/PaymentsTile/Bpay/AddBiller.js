@@ -3,7 +3,7 @@ import NavTileBarLayout from "../../AppLayout/NavTileBarLayout"
 import { StyledLi } from "../common/AccountModalStyled"
 import { Label, PaymentWrapper, PrimaryButton } from "../common/StyledPaymnetInput"
 import { StyledAdBillerInput } from "./StyledAddBiller"
-import { updateBillers } from "../../../supabase/apiAccounts"
+import { addBillers } from "../../../supabase/apiAccounts"
 import { useNavigate } from "react-router-dom"
 
 const AddBiller = () => {
@@ -11,7 +11,7 @@ const AddBiller = () => {
     const [newBiller, setNewBiller] = useState({ billerName: '', billerCode: '', ref: '' })
     const submitHandler = (e) => {
         e.preventDefault()
-        updateBillers(newBiller)
+        addBillers(newBiller)
         navigate(-1)
     }
 
