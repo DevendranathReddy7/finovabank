@@ -84,3 +84,12 @@ export const deleteBiller = async (id) => {
         .delete()
         .eq('id', id)
 }
+
+export const updateBiller = async (newdetails, id) => {
+    const { data, error } = await supabase
+        .from('Billers')
+        .update({ billerName: newdetails.billerName, billerCode: newdetails.billerCode, referenceNo: newdetails.ref })
+        .eq('id', id)
+        .select()
+
+}

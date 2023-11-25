@@ -6,7 +6,7 @@ import { AccountNameDiv } from "../../PaymentsTile/common/AccountModalStyled"
 import { PrimaryButton } from "../../PaymentsTile/common/StyledPaymnetInput"
 
 const ManageBiller = () => {
-    const { billers, setBillers, setDeleteThisBiller } = usePayments()
+    const { billers, setBillers, setDeleteThisBiller, setEditThisBiller } = usePayments()
     const navigate = useNavigate()
     const addHandler = () => {
         navigate('/add-biller')
@@ -22,6 +22,10 @@ const ManageBiller = () => {
         // const updatedBillers = billers.filter(bill => bill.id !== id)
         // setBillers(updatedBillers)
         //console.log(updatedBillers)
+    }
+    const editHandle = (id) => {
+        setEditThisBiller(id)
+        navigate('/add-biller')
     }
     return (
         <div>
@@ -42,7 +46,7 @@ const ManageBiller = () => {
                                 </AccountNameDiv>
                             </BillerColumn>
                             <div>
-                                <Button>Edit</Button>
+                                <Button onClick={() => editHandle(biller.id)}>Edit</Button>
                                 <Button onClick={() => deleteHandle(biller.id)}>Delete</Button>
                             </div>
                         </Styledli>

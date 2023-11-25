@@ -11,6 +11,7 @@ const PaymentProvider = ({ children }) => {
     const [accounts, setAccounts] = useState([])
     const [billers, setBillers] = useState({})
     const [deleteThisBiller, setDeleteThisBiller] = useState('')
+    const [editThisBiller, setEditThisBiller] = useState('')
     const [paymentData, setPaymentData] = useState({})
     const { currentUser } = useAuth()
 
@@ -40,7 +41,7 @@ const PaymentProvider = ({ children }) => {
         getBillers()
     }, [deleteThisBiller, Object.keys(billers).length])
     console.log(Object.keys(billers).length)
-    return <PaymentContext.Provider value={{ accounts, paymentData, setPaymentData, billers, setBillers, setDeleteThisBiller }}>{children}</PaymentContext.Provider>
+    return <PaymentContext.Provider value={{ accounts, paymentData, setPaymentData, billers, setBillers, setDeleteThisBiller, setEditThisBiller, editThisBiller, setEditThisBiller }}>{children}</PaymentContext.Provider>
 
 }
 
