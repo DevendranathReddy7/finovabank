@@ -11,7 +11,6 @@ const ReviewConfirm = () => {
     const continueHandler = () => {
         setPaymentData({ ...paymentData, selectedFromAccount: [{ ...paymentData.selectedFromAccount[0], funds: paymentData.selectedFromAccount[0].funds - Number(paymentData.enteredAmount) }, ...paymentData.selectedFromAccount.slice(1)], selectedToAccount: [{ ...paymentData.selectedToAccount[0], funds: paymentData.selectedToAccount[0].funds + Number(paymentData.enteredAmount) }, ...paymentData.selectedToAccount.slice(1)] })
     }
-    console.log(paymentData)
     return (
         <div>
             <NavTileBarLayout />

@@ -32,7 +32,6 @@ const AddBiller = () => {
                 break
         }
     }
-    console.log(editBiller)
     useEffect(() => {
         const editFn = async () => {
             const edit = await billers?.filter(bill => bill.id === editThisBiller)

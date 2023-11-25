@@ -40,7 +40,6 @@ const PaymentProvider = ({ children }) => {
         }
         getBillers()
     }, [deleteThisBiller, Object.keys(billers).length])
-    console.log(Object.keys(billers).length)
     return <PaymentContext.Provider value={{ accounts, paymentData, setPaymentData, billers, setBillers, setDeleteThisBiller, setEditThisBiller, editThisBiller, setEditThisBiller }}>{children}</PaymentContext.Provider>
 
 }
